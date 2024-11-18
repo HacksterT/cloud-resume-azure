@@ -107,32 +107,52 @@ class RoleManager:
 
     def generate_html(self) -> str:
         """Generate HTML for all roles."""
-        html_parts = []
+        # Sort roles by category
+        roles_by_category = {
+            "administrative": [],
+            "clinical": [],
+            "academic": []
+        }
+        
+        # Group roles by category
         for role in self.roles_data["roles"]:
-            accomplishments_html = "\n".join(
-                f'<li>{item}</li>' for item in role["accomplishments"]
-            )
-            
-            role_html = f'''
-                <div class="timeline-item" data-category="{role['category']}" data-date="{role['date_start']}">
-                    <div class="role-title">{role['title']}</div>
-                    <div class="company-name">{role['company']}</div>
-                    <div class="role-meta">
-                        <span class="dates">{role['dates_display']}</span>
-                        <span class="location">{role['location']}</span>
-                    </div>
-                    <div class="company-description">
-                        {role['company_description']}
-                    </div>
-                    <div class="job-description">
-                        {role['job_description']}
-                    </div>
-                    <ul class="accomplishments">
-                        {accomplishments_html}
-                    </ul>
-                </div>
-            '''
-            html_parts.append(role_html)
+            category = role["category"]
+            if category in roles_by_category:
+                roles_by_category[category].append(role)
+
+        # Generate HTML for each category
+        html_parts = []
+        for category, roles in roles_by_category.items():
+            if roles:  # Only add category if it has roles
+                html_parts.append(f'<div class="category-section" id="{category}-roles">')
+                html_parts.append(f'<h3>{category.title()} Roles</h3>')
+                
+                for role in roles:
+                    accomplishments_html = "\n".join(
+                        f'<li>{item}</li>' for item in role["accomplishments"]
+                    )
+                    
+                    role_html = f'''
+                        <div class="timeline-item" data-category="{role['category']}" data-date="{role['date_start']}">
+                            <div class="role-title">{role['title']}</div>
+                            <div class="company-name">{role['company']}</div>
+                            <div class="role-meta">
+                                <span class="dates">{role['dates_display']}</span>
+                                <span class="location">{role['location']}</span>
+                            </div>
+                            <div class="company-description">
+                                {role['company_description']}
+                            </div>
+                            <div class="job-description">
+                                {role['job_description']}
+                            </div>
+                            <ul class="accomplishments">
+                                {accomplishments_html}
+                            </ul>
+                        </div>
+                    '''
+                    html_parts.append(role_html)
+                html_parts.append('</div>')  # Close category section
 
         return "\n".join(html_parts)
 
@@ -141,20 +161,42 @@ class RoleManager:
         if not os.path.exists(self.template_file):
             raise FileNotFoundError(f"Template file not found: {self.template_file}")
 
-        with open(self.template_file, 'r') as f:
-            template_content = f.read()
+        try:
+            with open(self.template_file, 'r', encoding='utf-8') as f:
+                template_content = f.read()
 
-        # Generate roles HTML
-        roles_html = self.generate_html()
+            # Generate roles HTML
+            roles_html = self.generate_html()
 
-        # Replace placeholder in template with generated content
-        updated_content = template_content.replace(
-            "<!-- Timeline items will be added here -->",
-            roles_html
-        )
+            # Look for the work experience section and insert roles
+            start_marker = '<div class="work-experience" id="work-experience">'
+            end_marker = '</div><!-- End of work experience -->'
+            
+            # Find the section and replace its content
+            start_idx = template_content.find(start_marker)
+            if start_idx == -1:
+                raise ValueError("Could not find work experience section in template")
+                
+            end_idx = template_content.find(end_marker, start_idx)
+            if end_idx == -1:
+                raise ValueError("Could not find end of work experience section in template")
+                
+            # Construct the new content
+            new_content = (
+                template_content[:start_idx + len(start_marker)] +
+                "\n" + roles_html + "\n" +
+                template_content[end_idx:]
+            )
 
-        with open(self.output_file, 'w') as f:
-            f.write(updated_content)
+            # Write the updated content
+            with open(self.output_file, 'w', encoding='utf-8') as f:
+                f.write(new_content)
+                
+            print(f"Successfully updated {self.output_file}")
+            
+        except Exception as e:
+            print(f"Error updating HTML file: {str(e)}")
+            raise
 
     def interactive_add_role(self):
         """Interactive command-line interface to add a role."""
@@ -214,11 +256,93 @@ class RoleManager:
         except Exception as e:
             print(f"\nError adding role: {str(e)}")
 
+    def interactive_update_role(self):
+        """Interactive interface to update a role."""
+        print("\n=== Update Role ===")
+        
+        # List existing roles
+        print("\nExisting Roles:")
+        for i, role in enumerate(self.roles_data["roles"], 1):
+            print(f"{i}. {role['company']} - {role['title']}")
+        
+        try:
+            choice = int(input("\nSelect role to update (enter number): ")) - 1
+            if choice < 0 or choice >= len(self.roles_data["roles"]):
+                print("Invalid selection!")
+                return
+            
+            role = self.roles_data["roles"][choice]
+            
+            # Show update menu
+            while True:
+                print("\nWhat would you like to update?")
+                print("1. Title")
+                print("2. Company")
+                print("3. Location")
+                print("4. Dates")
+                print("5. Company Description")
+                print("6. Job Description")
+                print("7. Accomplishments")
+                print("8. Done")
+                
+                update_choice = input("\nEnter choice (1-8): ")
+                
+                if update_choice == "1":
+                    role["title"] = input("New Title: ")
+                elif update_choice == "2":
+                    role["company"] = input("New Company: ")
+                elif update_choice == "3":
+                    role["location"] = input("New Location: ")
+                elif update_choice == "4":
+                    role["date_start"] = input("New Start Date (YYYY-MM): ")
+                    end = input("New End Date (YYYY-MM or 'present'): ")
+                    role["date_end"] = end
+                    date_start_obj = datetime.strptime(role['date_start'], "%Y-%m")
+                    date_start_display = date_start_obj.strftime("%B %Y")
+                    if role["date_end"].lower() == "present":
+                        date_end_display = "Present"
+                    else:
+                        date_end_obj = datetime.strptime(role['date_end'], "%Y-%m")
+                        date_end_display = date_end_obj.strftime("%B %Y")
+                    role["dates_display"] = f"{date_start_display} - {date_end_display}"
+                elif update_choice == "5":
+                    role["company_description"] = input("New Company Description: ")
+                elif update_choice == "6":
+                    role["job_description"] = input("New Job Description: ")
+                elif update_choice == "7":
+                    print("\nCurrent Accomplishments:")
+                    for i, acc in enumerate(role["accomplishments"], 1):
+                        print(f"{i}. {acc}")
+                    print("\nEnter new accomplishments (empty line to finish):")
+                    new_acc = []
+                    while True:
+                        line = input("> ")
+                        if not line:
+                            break
+                        new_acc.append(line)
+                    if new_acc:
+                        role["accomplishments"] = new_acc
+                elif update_choice == "8":
+                    break
+                else:
+                    print("Invalid choice!")
+            
+            # Save changes
+            self._save_data()
+            print("\nRole updated successfully!")
+            
+        except ValueError:
+            print("Invalid input!")
+
 def main():
+    # Get the absolute path to the frontend directory
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    frontend_dir = os.path.dirname(current_dir)
+    
     manager = RoleManager(
-        data_file="frontend/data/roles.json",
-        template_file="frontend/index_template.html",
-        output_file="frontend/index.html"
+        data_file=os.path.join(frontend_dir, "data", "roles.json"),
+        template_file=os.path.join(frontend_dir, "index_template.html"),
+        output_file=os.path.join(frontend_dir, "index.html")
     )
     
     while True:
@@ -241,7 +365,7 @@ def main():
             else:
                 print("Role not found!")
         elif choice == "3":
-            print("Feature coming soon...")
+            manager.interactive_update_role()
         elif choice == "4":
             manager.update_html_file()
             print("HTML generated successfully!")

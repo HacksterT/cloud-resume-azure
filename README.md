@@ -11,29 +11,63 @@ This project implements a cloud-based resume website with a sophisticated conten
    - Project management system (`update_projects.py`)
    - JSON-based data storage
    - Interactive CLI interfaces
+   - Admin authentication system
+   - Virtual environment support
 
 2. **File Structure**
 ```
 cloud-resume-azure/
 ├── frontend/
-│   ├── data/
-│   │   ├── roles.json           # Role data storage
-│   │   └── projects.json        # Project data storage
-│   ├── scripts/
+│   ├── admin/
 │   │   ├── manage_resume.py     # Main management interface
 │   │   ├── update_roles.py      # Role management system
 │   │   └── update_projects.py   # Project management system
+│   ├── data/
+│   │   ├── roles.json           # Role data storage
+│   │   └── projects.json        # Project data storage
 │   ├── js/
 │   │   └── work-toggle.js       # Public interface JavaScript
 │   ├── index_template.html      # Template for generation
 │   └── index.html              # Generated website
+├── venv/                       # Python virtual environment
+└── requirements.txt            # Python dependencies
 ```
 
 ### Next Steps
-1. Test management systems with real data
-2. Set up Azure infrastructure
-3. Implement visitor counter
-4. Configure CI/CD pipeline
+1. Complete Azure infrastructure setup
+2. Implement visitor counter
+3. Configure CI/CD pipeline
+4. Add more roles and projects data
+
+## Setup Instructions
+
+### Local Development Setup
+1. Clone the repository:
+   ```bash
+   git clone [repository-url]
+   cd cloud-resume-azure
+   ```
+
+2. Set up Python virtual environment:
+   ```bash
+   python -m venv venv
+   venv\Scripts\activate  # On Windows
+   pip install -r requirements.txt
+   ```
+
+3. Initialize the admin system:
+   ```bash
+   cd frontend/admin
+   python manage_resume.py
+   ```
+   - Follow the prompts to set up your admin password
+   - Use the management interface to add/edit roles and projects
+
+### File Structure Details
+- **index_template.html**: Base template for the resume website
+- **index.html**: Generated website with actual content
+- **roles.json**: Stores role information in categories (Administrative, Clinical, Academic)
+- **manage_resume.py**: Main interface for content management
 
 ## Architecture Overview
 
@@ -42,11 +76,13 @@ cloud-resume-azure/
   - Python-based content management
   - JSON data storage for role information
   - HTML template generation
+  - Admin authentication
   - Features:
     * Add/remove/update roles
     * Generate formatted HTML
     * Maintain career history
     * Category-based organization (Clinical, Administrative, Academic)
+    * Toggle between categorized and chronological views
 
 ### 2. Public Cloud Infrastructure
 - **Frontend (Azure Static Website)**
@@ -84,11 +120,13 @@ Public Access:                                    Azure Blob Storage
   - Python 3.x
   - JSON for data storage
   - Template-based HTML generation
+  - Virtual environment for dependency management
 
 - **Frontend**
   - HTML5/CSS3
   - Modern JavaScript
   - Responsive design
+  - Category/chronological view toggle
 
 - **Cloud Services**
   - Azure Blob Storage
@@ -99,71 +137,6 @@ Public Access:                                    Azure Blob Storage
 - **DevOps**
   - GitHub
   - GitHub Actions
-  - Azure CLI
-
-## Project Structure
-```
-cloud-resume-azure/
-├── frontend/
-│   ├── data/
-│   │   └── roles.json           # Role data storage
-│   ├── scripts/
-│   │   └── update_roles.py      # Role management system
-│   ├── js/
-│   │   └── work-toggle.js       # Public interface JavaScript
-│   ├── index_template.html      # Template for generation
-│   └── index.html              # Generated website
-│
-├── backend/
-│   └── counter_function/        # Visitor counter Azure Function
-│
-└── infrastructure/
-    └── azure/                   # Azure configuration
-```
-
-## Development Workflow
-1. **Content Management (Local)**
-   - Use Python scripts to manage roles
-   - Generate new HTML from templates
-   - Test locally before deployment
-
-2. **Deployment Process**
-   - Deploy static content to Azure
-   - Update Azure Functions if needed
-   - Verify public access
-
-3. **Monitoring**
-   - Track visitor statistics
-   - Monitor Azure resources
-   - Verify content updates
-
-## Security Considerations
-- Local management tools run only on admin machine
-- Azure Function security for counter
-- CORS configuration for API
-- SSL/TLS for all public endpoints
-
-## Future Enhancements
-- Enhanced analytics
-- PDF resume generation
-- Additional interactive features
-- Blog integration possibility
-
-## Getting Started
-1. **Local Setup**
-   - Clone repository
-   - Install Python requirements
-   - Configure Azure CLI
-
-2. **Azure Configuration**
-   - Set up Blob Storage
-   - Deploy Azure Functions
-   - Configure CosmosDB
-
-3. **Content Management**
-   - Use role management scripts
-   - Update templates as needed
-   - Deploy changes
 
 ## Resources
 - [Azure Static Website Documentation](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website)
@@ -171,13 +144,10 @@ cloud-resume-azure/
 - [Azure CosmosDB](https://docs.microsoft.com/en-us/azure/cosmos-db/)
 
 ## Project Status
-- ✅ Content Management System
-  - ✅ Role management
-  - ✅ Project management
-  - ✅ Main management interface
-- ✅ Data storage structure
-- ✅ HTML generation
-- ⏳ Content population
-- ⏳ Azure deployment
-- ⏳ Visitor counter
-- ⏳ CI/CD pipeline
+- ✅ Local management system implemented
+- ✅ Role management system completed
+- ✅ Admin authentication added
+- ✅ Virtual environment setup
+- ⏳ Azure infrastructure setup in progress
+- ⏳ Visitor counter implementation pending
+- ⏳ CI/CD pipeline configuration pending
