@@ -213,6 +213,95 @@
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
+
+        /* Credentials section styles */
+        .credentials-section {
+            margin: 2rem 0;
+            padding: 1rem;
+        }
+        .credentials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        .credential-category {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .credential-category h3 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .credential-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .credential-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .credential-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.3rem;
+        }
+        .credential-issuer {
+            color: #3498db;
+            font-size: 0.95em;
+            margin-bottom: 0.2rem;
+        }
+        .credential-meta {
+            color: #666;
+            font-size: 0.9em;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        .credential-status {
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+        .status-active {
+            background: #d4edda;
+            color: #155724;
+        }
+        .status-inactive {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .status-eligible {
+            background: #fff3cd;
+            color: #856404;
+        }
+        .education-item {
+            margin-bottom: 2rem;
+        }
+        .education-item .institution {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        .education-item .degree {
+            color: #3498db;
+            margin: 0.3rem 0;
+        }
+        .education-item .location-date {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .education-item .honors {
+            color: #28a745;
+            font-style: italic;
+            margin-top: 0.3rem;
+        }
     </style>
 </head>
 <body>
@@ -319,9 +408,32 @@
         </div>
 
         <div class="section" id="credentials">
-            <h2>Credentials</h2>
-            <div class="credentials-content">
-                <!-- Credentials content will be added here -->
+            <h2>Education & Credentials</h2>
+            <div class="credentials-grid">
+                <div class="credential-category">
+                    <h3>Education</h3>
+                    <div class="education-items">
+                        <!-- Education items will be added here -->
+                    </div>
+                </div>
+                <div class="credential-category">
+                    <h3>Board Certifications</h3>
+                    <div class="certification-items">
+                        <!-- Board certification items will be added here -->
+                    </div>
+                </div>
+                <div class="credential-category">
+                    <h3>Other Certifications</h3>
+                    <div class="other-certification-items">
+                        <!-- Other certification items will be added here -->
+                    </div>
+                </div>
+                <div class="credential-category">
+                    <h3>Medical Licenses</h3>
+                    <div class="license-items">
+                        <!-- License items will be added here -->
+                    </div>
+                </div>
             </div>
         </div>
 
