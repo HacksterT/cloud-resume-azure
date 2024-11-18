@@ -3,6 +3,38 @@
 ## Project Overview
 This project implements a cloud-based resume website with a sophisticated content management system and visitor counter. It combines local management tools with Azure cloud services to create a professional, maintainable portfolio website.
 
+## Current Progress
+### Completed Features
+1. **Content Management System**
+   - Created unified management script (`manage_resume.py`)
+   - Role management system (`update_roles.py`)
+   - Project management system (`update_projects.py`)
+   - JSON-based data storage
+   - Interactive CLI interfaces
+
+2. **File Structure**
+```
+cloud-resume-azure/
+├── frontend/
+│   ├── data/
+│   │   ├── roles.json           # Role data storage
+│   │   └── projects.json        # Project data storage
+│   ├── scripts/
+│   │   ├── manage_resume.py     # Main management interface
+│   │   ├── update_roles.py      # Role management system
+│   │   └── update_projects.py   # Project management system
+│   ├── js/
+│   │   └── work-toggle.js       # Public interface JavaScript
+│   ├── index_template.html      # Template for generation
+│   └── index.html              # Generated website
+```
+
+### Next Steps
+1. Test management systems with real data
+2. Set up Azure infrastructure
+3. Implement visitor counter
+4. Configure CI/CD pipeline
+
 ## Architecture Overview
 
 ### 1. Local Management System
@@ -139,8 +171,13 @@ cloud-resume-azure/
 - [Azure CosmosDB](https://docs.microsoft.com/en-us/azure/cosmos-db/)
 
 ## Project Status
-- Role management system
-- HTML generation
-- Azure deployment
-- Visitor counter
-- CI/CD pipeline
+- ✅ Content Management System
+  - ✅ Role management
+  - ✅ Project management
+  - ✅ Main management interface
+- ✅ Data storage structure
+- ✅ HTML generation
+- ⏳ Content population
+- ⏳ Azure deployment
+- ⏳ Visitor counter
+- ⏳ CI/CD pipeline

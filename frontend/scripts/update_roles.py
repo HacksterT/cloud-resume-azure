@@ -148,7 +148,6 @@ class RoleManager:
         roles_html = self.generate_html()
 
         # Replace placeholder in template with generated content
-        # You'll need to add appropriate placeholder comments in your HTML template
         updated_content = template_content.replace(
             "<!-- Timeline items will be added here -->",
             roles_html
@@ -157,25 +156,99 @@ class RoleManager:
         with open(self.output_file, 'w') as f:
             f.write(updated_content)
 
-# Example usage
-if __name__ == "__main__":
-    manager = RoleManager(
-        data_file="data/roles.json",
-        template_file="index_template.html",
-        output_file="index.html"
-    )
+    def interactive_add_role(self):
+        """Interactive command-line interface to add a role."""
+        print("\n=== Add New Role ===")
+        
+        # Get role details
+        category = input("Category (administrative/clinical/academic): ").lower()
+        title = input("Job Title: ")
+        company = input("Company Name: ")
+        location = input("Location: ")
+        date_start = input("Start Date (YYYY-MM): ")
+        date_end = input("End Date (YYYY-MM or 'present'): ")
+        
+        print("\nCompany Description (press Enter twice when done):")
+        company_description = []
+        while True:
+            line = input()
+            if line:
+                company_description.append(line)
+            else:
+                break
+        company_description = " ".join(company_description)
+        
+        print("\nJob Description (press Enter twice when done):")
+        job_description = []
+        while True:
+            line = input()
+            if line:
+                job_description.append(line)
+            else:
+                break
+        job_description = " ".join(job_description)
+        
+        print("\nAccomplishments (one per line, press Enter twice when done):")
+        accomplishments = []
+        while True:
+            line = input()
+            if line:
+                accomplishments.append(line)
+            else:
+                break
 
-    # Example: Add a new role
-    # manager.add_role(
-    #     category="administrative",
-    #     title="Chief Medical Information Officer",
-    #     company="Healthcare Innovation Partners",
-    #     location="Austin, Texas",
-    #     date_start="2020-01",
-    #     company_description="A leading healthcare technology consulting firm...",
-    #     job_description="Led strategic initiatives...",
-    #     accomplishments=[
-    #         "Spearheaded the implementation...",
-    #         "Developed and executed..."
-    #     ]
-    # )
+        # Add the role
+        try:
+            self.add_role(
+                category=category,
+                title=title,
+                company=company,
+                location=location,
+                date_start=date_start,
+                date_end=date_end,
+                company_description=company_description,
+                job_description=job_description,
+                accomplishments=accomplishments
+            )
+            print("\nRole added successfully!")
+        except Exception as e:
+            print(f"\nError adding role: {str(e)}")
+
+def main():
+    manager = RoleManager(
+        data_file="frontend/data/roles.json",
+        template_file="frontend/index_template.html",
+        output_file="frontend/index.html"
+    )
+    
+    while True:
+        print("\n=== Role Management System ===")
+        print("1. Add New Role")
+        print("2. Remove Role")
+        print("3. Update Role")
+        print("4. Generate HTML")
+        print("5. Exit")
+        
+        choice = input("\nEnter your choice (1-5): ")
+        
+        if choice == "1":
+            manager.interactive_add_role()
+        elif choice == "2":
+            company = input("Company Name: ")
+            title = input("Job Title: ")
+            if manager.remove_role(company, title):
+                print("Role removed successfully!")
+            else:
+                print("Role not found!")
+        elif choice == "3":
+            print("Feature coming soon...")
+        elif choice == "4":
+            manager.update_html_file()
+            print("HTML generated successfully!")
+        elif choice == "5":
+            break
+        else:
+            print("Invalid choice!")
+
+if __name__ == "__main__":
+    main()
