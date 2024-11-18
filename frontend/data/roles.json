@@ -1,0 +1,21 @@
+{
+    "roles": [
+        {
+            "category": "administrative",
+            "date_start": "2020-01",
+            "date_end": "present",
+            "title": "Chief Medical Information Officer",
+            "company": "Healthcare Innovation Partners",
+            "location": "Austin, Texas",
+            "dates_display": "January 2020 - Present",
+            "company_description": "A leading healthcare technology consulting firm specializing in digital transformation and clinical workflow optimization for large healthcare systems.",
+            "job_description": "Led strategic initiatives to modernize clinical information systems and improve patient care delivery through innovative technology solutions while maintaining operational excellence across multiple facilities.",
+            "accomplishments": [
+                "Spearheaded the implementation of a $50M Epic EMR system across 5 hospitals, resulting in 30% improvement in clinical documentation efficiency",
+                "Developed and executed AI-driven clinical decision support system, reducing medication errors by 45% and improving patient outcomes",
+                "Established telemedicine programs across 12 specialties, increasing patient access by 200% during COVID-19 pandemic",
+                "Led cross-functional teams of 50+ IT and clinical staff, achieving 98% system uptime and 95% user satisfaction"
+            ]
+        }
+    ]
+}

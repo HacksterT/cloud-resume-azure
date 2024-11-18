@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Troy E. Sybert - Professional Portfolio</title>
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        
+        /* Header styles */
+        .header {
+            background: linear-gradient(to right, #2c3e50, #3498db);
+            color: white;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid white;
+            background: #ccc;
+            overflow: hidden;
+        }
+        .profile-info {
+            flex-grow: 1;
+        }
+
+        /* Career box styles */
+        .career-box {
+            border: 2px solid #3498db;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            background: #f8f9fa;
+        }
+        .career-box h3 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 1.2em;
+        }
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 1.1em;
+            color: #2c3e50;
+            padding: 0 1rem;
+        }
+        .experience-item {
+            line-height: 1.4;
+        }
+        .experience-item strong {
+            font-weight: 600;
+            color: inherit;
+        }
+
+        /* Skills grid styles */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem 2rem;
+            margin-top: 1.5rem;
+            padding: 0 1rem;
+        }
+        .skill-item {
+            background: transparent;
+            padding: 0.4rem 0;
+            text-align: left;
+            border: none;
+            font-size: 1em;
+            position: relative;
+            padding-left: 1.2em;
+        }
+        .skill-item::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-size: 1.2em;
+            line-height: 1;
+        }
+
+        /* Work section styles */
+        .work-categories {
+            margin-top: 1rem;
+        }
+        .view-toggle {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        .view-toggle label {
+            margin: 0 1rem;
+            cursor: pointer;
+            color: #2c3e50;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .view-toggle label:hover {
+            background-color: #e9ecef;
+        }
+        .view-toggle input[type="radio"] {
+            margin-right: 0.5rem;
+        }
+        .work-category {
+            margin-bottom: 2rem;
+        }
+        .work-category h3 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e9ecef;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding: 0 0 0.5rem 0;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #3498db;
+            border: 2px solid #fff;
+        }
+        .timeline-item .role-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.3rem;
+        }
+        .timeline-item .company-name {
+            font-size: 1.1em;
+            color: #3498db;
+            margin-bottom: 0.2rem;
+        }
+        .timeline-item .role-meta {
+            display: flex;
+            gap: 1.5rem;
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 1rem;
+        }
+        .timeline-item .company-description {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+        .timeline-item .job-description {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        .timeline-item .accomplishments {
+            margin: 0;
+            padding-left: 1.2rem;
+        }
+        .timeline-item .accomplishments li {
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+            color: #2c3e50;
+        }
+        .timeline-item .accomplishments li::marker {
+            color: #3498db;
+        }
+
+        /* Section styles */
+        .section {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="profile-section">
+            <div class="profile-photo">
+                <!-- Placeholder for professional photo -->
+            </div>
+            <div class="profile-info">
+                <h1>Troy E. Sybert, MD, MPH, CUA</h1>
+                <p>Physician Executive | Transformational Leader | Healthcare Innovator</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="section" id="summary">
+            <h2>Professional Summary</h2>
+            <div class="summary-content">
+                <p>As a versatile and value-driven leader with experience spanning diverse healthcare settings, my focus remains steadfast on maintaining a patient-centric commitment while contributing to organizational growth and well-being through relationship building and collaborative decision-making. My approach integrates innovative technologies and data-driven solutions to transform healthcare delivery, consistently bridging the gap between clinical excellence and technological advancement.</p>
+                
+                <div class="career-box">
+                    <h3>CAREER EXPERIENCE</h3>
+                    <div class="experience-grid">
+                        <div class="experience-item">
+                            <strong>21 years</strong> of Clinical Experience
+                        </div>
+                        <div class="experience-item">
+                            <strong>18 years</strong> of Executive Experience
+                        </div>
+                        <div class="experience-item">
+                            <strong>10 years</strong> of Healthcare IT Experience
+                        </div>
+                    </div>
+
+                    <div class="skills-grid">
+                        <div class="skill-item">Inpatient/Outpatient</div>
+                        <div class="skill-item">Leadership Development</div>
+                        <div class="skill-item">Performance Improvement</div>
+                        <div class="skill-item">Revenue Cycle Consulting</div>
+                        <div class="skill-item">Digital Strategy</div>
+                        <div class="skill-item">Clinical Informatics</div>
+                        <div class="skill-item">Multiple EMRs</div>
+                        <div class="skill-item">Budget/Contracting</div>
+                        <div class="skill-item">Statistics/Epidemiology</div>
+                        <div class="skill-item">Quality/Safety</div>
+                        <div class="skill-item">Multi-Site Facilities</div>
+                        <div class="skill-item">Organizational Management</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="work">
+            <h2>Work Activity</h2>
+            
+            <div class="view-toggle">
+                <label>
+                    <input type="radio" name="view" id="view-categorized" checked>
+                    Categorized View
+                </label>
+                <label>
+                    <input type="radio" name="view" id="view-chronological">
+                    Chronological View
+                </label>
+            </div>
+
+            <div class="work-categories">
+                <div class="work-category" data-category="administrative">
+                    <h3>Administrative</h3>
+                    <div class="timeline">
+                        <!-- Timeline items will be added here -->
+                    </div>
+                </div>
+                
+                <div class="work-category" data-category="clinical">
+                    <h3>Clinical</h3>
+                    <div class="timeline">
+                        <!-- Timeline items will be added here -->
+                    </div>
+                </div>
+
+                <div class="work-category" data-category="academic">
+                    <h3>Academic</h3>
+                    <div class="timeline">
+                        <!-- Timeline items will be added here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="portfolio">
+            <h2>Consulting/Project Portfolio</h2>
+            <div class="timeline">
+                <!-- Portfolio items will be added here -->
+            </div>
+        </div>
+
+        <div class="section" id="credentials">
+            <h2>Credentials</h2>
+            <div class="credentials-content">
+                <!-- Credentials content will be added here -->
+            </div>
+        </div>
+
+        <div class="section" id="volunteer">
+            <h2>Volunteer Work & Awards</h2>
+            <div class="timeline">
+                <!-- Volunteer work and awards content will be added here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Add the work toggle script -->
+    <script src="js/work-toggle.js"></script>
+</body>
+</html>

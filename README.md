@@ -1,155 +1,146 @@
 # Cloud Resume Project
 
 ## Project Overview
-This project implements a cloud-based resume website with a visitor counter, utilizing various Azure services and modern web technologies. It's based on the Cloud Resume Challenge but modernized and implemented using Python for backend services.
+This project implements a cloud-based resume website with a sophisticated content management system and visitor counter. It combines local management tools with Azure cloud services to create a professional, maintainable portfolio website.
 
 ## Architecture Overview
 
-### 1. Frontend Architecture
-- **Static Website**
-  - HTML, CSS, JavaScript
-  - Resume content display
-  - Visitor counter integration
-  - API integration for counter updates
-
-- **Hosting Options**
-  - Azure Blob Storage (with static website hosting)
-  - Alternative: Azure Static Web Apps
+### 1. Local Management System
+- **Role Management System**
+  - Python-based content management
+  - JSON data storage for role information
+  - HTML template generation
   - Features:
-    * CDN integration capability
+    * Add/remove/update roles
+    * Generate formatted HTML
+    * Maintain career history
+    * Category-based organization (Clinical, Administrative, Academic)
+
+### 2. Public Cloud Infrastructure
+- **Frontend (Azure Static Website)**
+  - Generated HTML, CSS, JavaScript
+  - Professional portfolio display
+  - Visitor counter integration
+  - Hosted on Azure Blob Storage
+  - Features:
+    * CDN integration
     * Custom domain support
     * SSL/TLS encryption
 
-### 2. Backend Architecture (Python-based)
-- **Azure Functions**
-  - HTTP-triggered functions using Python runtime
-  - Python Azure Functions SDK
-  - Azure SDK for Python for database interactions
-  - Features:
-    * RESTful API endpoints
-    * CORS configuration
-    * Serverless architecture
+- **Backend Services**
+  - Azure Functions (Python-based)
+    * Visitor counter endpoint
+    * Simple API for public features
+  - CosmosDB
+    * Store visitor statistics
+    * Basic analytics data
 
-- **Database: Azure CosmosDB**
-  - NoSQL document database
-  - Stores visitor counter data
-  - Scalable and serverless
-
-### 3. Integration Components
-- Frontend ↔ Backend: REST API calls
-- Backend ↔ Database: Azure SDK bindings
-- GitHub ↔ Azure: Automated deployment
-
-### 4. DevOps Pipeline
-- **Source Control**
-  - GitHub repository
-  - Branch protection rules
-  - Code review process
-
-- **CI/CD: GitHub Actions**
-  - Automated testing
-  - Deployment automation
-  - Environment management
-
-- **Testing Framework**
-  - pytest for Python backend
-  - Integration tests
-  - API testing
+### 3. Workflow Architecture
+```
+Local Management:
+Role Manager (Python) → roles.json → HTML Generation → Deploy to Azure
+                                                          ↓
+Public Access:                                    Azure Blob Storage
+                                                          ↓
+                                                    Visitor Views
+                                                          ↓
+                                                Azure Function Counter
+```
 
 ## Technology Stack
-- **Frontend**
-  - HTML5
-  - CSS3
-  - JavaScript (vanilla/modern)
-
-- **Backend**
+- **Local Management**
   - Python 3.x
-  - Azure Functions Python runtime
-  - Azure SDK for Python
+  - JSON for data storage
+  - Template-based HTML generation
 
-- **Database**
+- **Frontend**
+  - HTML5/CSS3
+  - Modern JavaScript
+  - Responsive design
+
+- **Cloud Services**
+  - Azure Blob Storage
+  - Azure Functions
   - Azure CosmosDB
-  - NoSQL document structure
+  - Azure CDN (optional)
 
 - **DevOps**
   - GitHub
   - GitHub Actions
   - Azure CLI
 
-## Development Environment Setup
-1. Required Tools:
-   - Visual Studio Code
-   - Azure CLI
-   - Python 3.x
-   - Azure Functions Core Tools
-   - Git
-
-2. VS Code Extensions:
-   - Azure Functions
-   - Azure Storage
-   - Python
-   - Azure Account
-
 ## Project Structure
 ```
-cloud_resume/
-│
+cloud-resume-azure/
 ├── frontend/
-│   ├── index.html
-│   ├── css/
-│   └── js/
+│   ├── data/
+│   │   └── roles.json           # Role data storage
+│   ├── scripts/
+│   │   └── update_roles.py      # Role management system
+│   ├── js/
+│   │   └── work-toggle.js       # Public interface JavaScript
+│   ├── index_template.html      # Template for generation
+│   └── index.html              # Generated website
 │
 ├── backend/
-│   ├── counter_function/
-│   │   ├── __init__.py
-│   │   ├── function.json
-│   │   └── requirements.txt
-│   └── tests/
+│   └── counter_function/        # Visitor counter Azure Function
 │
-├── infrastructure/
-│   └── terraform/  # or ARM templates
-│
-└── .github/
-    └── workflows/
+└── infrastructure/
+    └── azure/                   # Azure configuration
 ```
 
+## Development Workflow
+1. **Content Management (Local)**
+   - Use Python scripts to manage roles
+   - Generate new HTML from templates
+   - Test locally before deployment
+
+2. **Deployment Process**
+   - Deploy static content to Azure
+   - Update Azure Functions if needed
+   - Verify public access
+
+3. **Monitoring**
+   - Track visitor statistics
+   - Monitor Azure resources
+   - Verify content updates
+
 ## Security Considerations
-- CORS configuration
-- Function-level authentication
-- Managed Identities for Azure resources
-- Key Vault for secrets management
-
-## Deployment Process
-1. Frontend deployment to Azure Storage
-2. Backend deployment via GitHub Actions
-3. Database provisioning and configuration
-4. CI/CD pipeline setup
-
-## Testing Strategy
-- Unit tests for Python functions
-- Integration tests for API endpoints
-- End-to-end testing
-- Load testing considerations
+- Local management tools run only on admin machine
+- Azure Function security for counter
+- CORS configuration for API
+- SSL/TLS for all public endpoints
 
 ## Future Enhancements
-- CDN integration
-- Custom domain setup
-- Analytics integration
-- Enhanced security features
+- Enhanced analytics
+- PDF resume generation
+- Additional interactive features
+- Blog integration possibility
 
-## Resources and References
-- [Azure Functions Python Documentation](https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-python)
-- [Azure CosmosDB Python SDK](https://docs.microsoft.com/en-us/azure/cosmos-db/sql/sql-api-python-samples)
-- [Azure Static Website Hosting](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website)
-- [GitHub Actions Documentation](https://docs.github.com/en/actions)
+## Getting Started
+1. **Local Setup**
+   - Clone repository
+   - Install Python requirements
+   - Configure Azure CLI
+
+2. **Azure Configuration**
+   - Set up Blob Storage
+   - Deploy Azure Functions
+   - Configure CosmosDB
+
+3. **Content Management**
+   - Use role management scripts
+   - Update templates as needed
+   - Deploy changes
+
+## Resources
+- [Azure Static Website Documentation](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website)
+- [Azure Functions Python](https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-python)
+- [Azure CosmosDB](https://docs.microsoft.com/en-us/azure/cosmos-db/)
 
 ## Project Status
-- Initial setup and documentation phase
-- Planning and architecture design
-- Ready for implementation
-
-## Notes
-- Python-based implementation instead of original C# version
-- Modern Azure services integration
-- Focus on serverless architecture
-- Emphasis on automation and DevOps practices
+- Role management system
+- HTML generation
+- Azure deployment
+- Visitor counter
+- CI/CD pipeline
