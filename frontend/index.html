@@ -15,6 +15,12 @@
     <title>Troy E. Sybert - Healthcare Leadership & Data Science Portfolio</title>
     <style>
         /* Base Styles */
+        :root {
+            --admin-color: rgba(52, 152, 219, 0.85);    /* Blue */
+            --clinical-color: rgba(46, 204, 113, 0.85);  /* Green */
+            --academic-color: rgba(155, 89, 182, 0.85);  /* Purple */
+        }
+
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
@@ -196,14 +202,7 @@
         }
 
         .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -2rem;
-            top: 0.5rem;
-            width: 1rem;
-            height: 1rem;
-            background: #3498db;
-            border-radius: 50%;
+            display: none; /* Hide the large dots */
         }
 
         /* Credentials */
@@ -786,13 +785,199 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Gantt Chart Styles */
+        .gantt-chart {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 2rem;
+            padding: 0 15px;  
+        }
+
+        .gantt-timeline {
+            position: relative;
+            min-width: 800px;
+            max-width: 100%;
+        }
+
+        .timeline-header {
+            position: relative;
+            padding: 1rem 0;
+            border-bottom: 2px solid #ddd;
+            margin: 0 auto;
+            height: 40px;  /* Fixed height for header */
+        }
+
+        .year-marker {
+            position: absolute;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 0.9em;
+        }
+
+        /* Position each year marker */
+        .year-marker:nth-child(1) { left: 0; }                 /* '00 at left edge */
+        .year-marker:nth-child(2) { left: 20%; }              /* '05 */
+        .year-marker:nth-child(3) { left: 40%; }              /* '10 */
+        .year-marker:nth-child(4) { left: 60%; }              /* '15 */
+        .year-marker:nth-child(5) { left: 80%; }              /* '20 */
+        .year-marker:nth-child(6) { right: 0; }               /* '25 at right edge */
+
+        .timeline-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: -700px;  /* Extend the grid lines down */
+            pointer-events: none;
+        }
+
+        .grid-line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            border-left: 1px dashed rgba(0,0,0,0.1);
+            width: 1px;
+        }
+
+        /* Position each grid line */
+        .grid-line:nth-child(1) { left: 0; }
+        .grid-line:nth-child(2) { left: 20%; }
+        .grid-line:nth-child(3) { left: 40%; }
+        .grid-line:nth-child(4) { left: 60%; }
+        .grid-line:nth-child(5) { left: 80%; }
+        .grid-line:nth-child(6) { right: 0; }
+
+        .gantt-entries {
+            position: relative;
+            z-index: 1;
+        }
+
+        .gantt-entry {
+            position: relative;
+            height: 10px;
+            margin-bottom: 25px;
+            border-radius: 2px;
+            width: calc((var(--end) - var(--start)) * 4%);
+            margin-left: calc(var(--start) * 4%);
+            opacity: 0.85;
+        }
+
+        .gantt-entry.admin {
+            background: var(--admin-color);
+        }
+
+        .gantt-entry.clinical {
+            background: var(--clinical-color);
+        }
+
+        .gantt-entry.academic {
+            background: var(--academic-color);
+        }
+
+        .gantt-entry:hover {
+            opacity: 1;
+        }
+
+        .entry-label {
+            position: absolute;
+            bottom: 12px;
+            left: 0;
+            color: #000000;
+            font-size: 0.85em;
+            white-space: nowrap;
+            font-weight: 500;
+            transform-origin: left bottom;
+        }
+
+        /* Adjust labels based on position to prevent overlap */
+        .gantt-entry:nth-child(even) .entry-label {
+            bottom: auto;
+            top: 12px;
+        }
+
+        .gantt-entry.label-top .entry-label {
+            bottom: auto;
+            top: -20px;
+        }
+
+        .gantt-entry.label-bottom .entry-label {
+            top: 12px;
+            bottom: auto;
+        }
+
+        /* Timeline grid improvements */
+        .timeline-grid {
+            z-index: 0;
+        }
+
+        .grid-line {
+            border-left: 1px dashed rgba(0,0,0,0.1);
+            height: 100%;  /* Extend grid lines */
+        }
+
+        .gantt-entries {
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .entry-label {
+                font-size: 0.75em;
+            }
+            
+            .gantt-timeline {
+                min-width: 600px;
+            }
+        }
+
+        .view-summary {
+            display: none;
+        }
+
+        .view-summary.active {
+            display: block;
+        }
+
+        .gantt-footnote {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 0.8em;
+            color: #666;
+            font-style: italic;
+        }
+
+        .gantt-category-admin {
+            position: absolute;
+            top: 90px;
+            left: 10px;
+            font-size: 1.6em;
+            color: var(--admin-color);
+        }
+
+        .gantt-category-clinical {
+            position: absolute;
+            top: 305px;
+            left: 10px;
+            font-size: 1.6em;
+            color: var(--clinical-color);
+        }
+
+        .gantt-category-academic {
+            position: absolute;
+            top: 520px;
+            left: 10px;
+            font-size: 1.6em;
+            color: var(--academic-color);
+        }
     </style>
 </head>
 <body>
     <header class="header">
         <div class="profile-section">
             <div class="profile-photo">
-                <!-- Placeholder for professional photo -->
+                <img src="assets/presentations/picture.jpg" alt="Troy E. Sybert" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
             </div>
             <div class="profile-info">
                 <h1>Troy E. Sybert, MD, MPH, CUA</h1>
@@ -861,6 +1046,10 @@
                     <label>
                         <input type="radio" name="view" value="chronological">
                         Chronological View
+                    </label>
+                    <label>
+                        <input type="radio" name="view" value="summary">
+                        Summary View
                     </label>
                 </div>
 
@@ -1167,6 +1356,19 @@
                                     In this role with this federally qualified health center, I provided primary care and urgent care coverage services through our county health district.
                                 </div>
                             </div>
+                            <div class="timeline-item" data-category="clinical" data-date="2006-07">
+                                <div class="role-title">MD: UTMB</div>
+                                <div class="company-meta">
+                                    <div class="company-name">University of Texas Medical Branch</div>
+                                    <div class="location">Galveston, TX</div>
+                                </div>
+                                <div class="role-meta">
+                                    <span class="dates">July 2006 - March 2010</span>
+                                </div>
+                                <div class="job-description">
+                                    Typical clinical duties
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -1284,6 +1486,94 @@
                             </div>
                         </div>
                         <div class="timeline">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary View (Gantt Chart) -->
+                <div class="work-categories view-summary">
+                    <div class="gantt-chart">
+                        <div class="gantt-timeline">
+                            <div class="timeline-header">
+                                <div class="year-marker">'00</div>
+                                <div class="year-marker">'05</div>
+                                <div class="year-marker">'10</div>
+                                <div class="year-marker">'15</div>
+                                <div class="year-marker">'20</div>
+                                <div class="year-marker">'25</div>
+                                <div class="timeline-grid">
+                                    <div class="grid-line"></div>
+                                    <div class="grid-line"></div>
+                                    <div class="grid-line"></div>
+                                    <div class="grid-line"></div>
+                                    <div class="grid-line"></div>
+                                    <div class="grid-line"></div>
+                                </div>
+                            </div>
+                            <div class="gantt-entries">
+                                <!-- Administrative -->
+                                <div class="gantt-entry admin label-bottom" style="--start: 23.42; --end: 24.92;">
+                                    <div class="entry-label">MD/IT: VA*</div>
+                                </div>
+                                <div class="gantt-entry admin" style="--start: 16; --end: 23.42;">
+                                    <div class="entry-label">CEO: TroyMD</div>
+                                </div>
+                                <div class="gantt-entry admin label-bottom" style="--start: 18; --end: 19;">
+                                    <div class="entry-label">CMO: AAHS</div>
+                                </div>
+                                <div class="gantt-entry admin" style="--start: 14; --end: 16;">
+                                    <div class="entry-label">CMO: Capella</div>
+                                </div>
+                                <div class="gantt-entry admin" style="--start: 10.25; --end: 14;">
+                                    <div class="entry-label">CQMIO: Wellmont</div>
+                                </div>
+                                <div class="gantt-entry admin" style="--start: 6.5; --end: 10.25;">
+                                    <div class="entry-label">CMO: UTMB</div>
+                                </div>
+
+                                <!-- Clinical -->
+                                <div class="gantt-entry clinical" style="--start: 23.42; --end: 24.92;">
+                                    <div class="entry-label">MD: VA*</div>
+                                </div>
+                                <div class="gantt-entry clinical label-bottom" style="--start: 23.67; --end: 24.92;">
+                                    <div class="entry-label">MD: P4H*</div>
+                                </div>
+                                <div class="gantt-entry clinical label-bottom" style="--start: 21.17; --end: 22;">
+                                    <div class="entry-label">MD: HM</div>
+                                </div>
+                                <div class="gantt-entry clinical label-bottom" style="--start: 18.5; --end: 18.83;">
+                                    <div class="entry-label">MD: MC</div>
+                                </div>
+                                <div class="gantt-entry clinical label-bottom" style="--start: 6.5; --end: 10.25;">
+                                    <div class="entry-label">MD: UTMB</div>
+                                </div>
+                                <div class="gantt-entry clinical label-bottom" style="--start: 6.08; --end: 6.5;">
+                                    <div class="entry-label">MD: Mayo</div>
+                                </div>
+                                <div class="gantt-entry clinical" style="--start: 3.92; --end: 7.08;">
+                                    <div class="entry-label">MD: Sterling</div>
+                                </div>
+                                <div class="gantt-entry clinical" style="--start: 3; --end: 5.5;">
+                                    <div class="entry-label">MD: GCHD</div>
+                                </div>
+
+                                <!-- Academic -->
+                                <div class="gantt-entry academic label-top" style="--start: 14; --end: 17;">
+                                    <div class="entry-label">Faculty: King</div>
+                                </div>
+                                <div class="gantt-entry academic" style="--start: 10.25; --end: 14;">
+                                    <div class="entry-label">Faculty: ETSU</div>
+                                </div>
+                                <div class="gantt-entry academic" style="--start: 6.5; --end: 10.25;">
+                                    <div class="entry-label">Faculty: UTMB</div>
+                                </div>
+
+                                <!-- Footnote -->
+                                <div class="gantt-footnote">*Active</div>
+                                <div class="gantt-category-admin">Administrative</div>
+                                <div class="gantt-category-clinical">Clinical</div>
+                                <div class="gantt-category-academic">Academic</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1800,45 +2090,101 @@
             // Work section specific functionality
             const workSection = document.getElementById('work');
             if (workSection) {
-                // Initially hide all timelines
-                const timelines = workSection.querySelectorAll('.timeline');
-                timelines.forEach(timeline => {
-                    timeline.style.display = 'none';
-                });
+                // Function to organize timeline items chronologically
+                function organizeTimelineItems() {
+                    const timelineItems = workSection.querySelectorAll('.view-categorized .timeline-item');
+                    const chronologicalTimelines = {
+                        '2020-Present': workSection.querySelector('.work-category[data-years="2020-Present"] .timeline'),
+                        '2015-2019': workSection.querySelector('.work-category[data-years="2015-2019"] .timeline'),
+                        '2010-2014': workSection.querySelector('.work-category[data-years="2010-2014"] .timeline'),
+                        '2003-2009': workSection.querySelector('.work-category[data-years="2003-2009"] .timeline')
+                    };
 
-                // Add click handlers to category headers
-                const categoryHeaders = workSection.querySelectorAll('.work-category-header');
-                categoryHeaders.forEach(header => {
-                    header.addEventListener('click', function(e) {
-                        e.stopPropagation(); // Prevent event from bubbling to section header
-                        const category = this.parentElement;
-                        const timeline = category.querySelector('.timeline');
+                    timelineItems.forEach(item => {
+                        const date = item.getAttribute('data-date');
+                        const year = parseInt(date.split('-')[0]);
+                        const clonedItem = item.cloneNode(true);
                         
-                        if (timeline.style.display === 'none') {
-                            timeline.style.display = 'block';
+                        if (year >= 2020) {
+                            chronologicalTimelines['2020-Present'].appendChild(clonedItem);
+                        } else if (year >= 2015) {
+                            chronologicalTimelines['2015-2019'].appendChild(clonedItem);
+                        } else if (year >= 2010) {
+                            chronologicalTimelines['2010-2014'].appendChild(clonedItem);
                         } else {
-                            timeline.style.display = 'none';
+                            chronologicalTimelines['2003-2009'].appendChild(clonedItem);
                         }
                     });
-                });
+                }
+
+                // Function to initialize timeline handlers
+                function initializeTimelineHandlers() {
+                    // Initially hide all timelines
+                    const timelines = workSection.querySelectorAll('.timeline');
+                    timelines.forEach(timeline => {
+                        timeline.style.display = 'none';
+                    });
+
+                    // Remove existing click handlers before adding new ones
+                    const headers = workSection.querySelectorAll('.work-category-header');
+                    headers.forEach(header => {
+                        const newHeader = header.cloneNode(true);
+                        header.parentNode.replaceChild(newHeader, header);
+                    });
+
+                    // Re-select headers after replacing them
+                    const newHeaders = workSection.querySelectorAll('.work-category-header');
+                    newHeaders.forEach(header => {
+                        header.addEventListener('click', function(e) {
+                            e.stopPropagation(); // Prevent event from bubbling to section header
+                            const category = this.parentElement;
+                            const timeline = category.querySelector('.timeline');
+                            const toggle = this.querySelector('.work-category-toggle svg');
+                            
+                            if (timeline.style.display === 'none') {
+                                timeline.style.display = 'block';
+                                if (toggle) {
+                                    toggle.style.transform = 'rotate(180deg)';
+                                }
+                            } else {
+                                timeline.style.display = 'none';
+                                if (toggle) {
+                                    toggle.style.transform = 'rotate(0deg)';
+                                }
+                            }
+                        });
+                    });
+                }
+
+                // Initialize handlers and organize items on page load
+                organizeTimelineItems();
+                initializeTimelineHandlers();
             }
 
             // View toggle functionality for work section
             const viewToggles = document.querySelectorAll('.view-toggle input');
             const categorizedView = document.querySelector('.view-categorized');
             const chronologicalView = document.querySelector('.view-chronological');
+            const summaryView = document.querySelector('.view-summary');
 
             viewToggles.forEach(toggle => {
                 toggle.addEventListener('change', function() {
                     if (this.value === 'categorized') {
                         categorizedView.classList.add('active');
                         chronologicalView.classList.remove('active');
-                    } else {
+                        summaryView.classList.remove('active');
+                        initializeTimelineHandlers();
+                    } else if (this.value === 'chronological') {
                         chronologicalView.classList.add('active');
                         categorizedView.classList.remove('active');
+                        summaryView.classList.remove('active');
+                    } else {
+                        summaryView.classList.add('active');
+                        categorizedView.classList.remove('active');
+                        chronologicalView.classList.remove('active');
                     }
                 });
-            });
+            });            
         });
     </script>
     <script src="js/resume.js"></script>
