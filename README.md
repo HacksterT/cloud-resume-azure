@@ -1,278 +1,99 @@
 # Cloud Resume Project
 
 ## Project Overview
-This project implements a cloud-based resume website with a sophisticated content management system and visitor counter. It combines local management tools with Azure cloud services to create a professional, maintainable portfolio website.
+This project implements a cloud-hosted resume website using Azure Static Web Apps. The design focuses on simplicity, maintainability, and professional presentation.
 
-## Current Progress
+## Architecture
+- **Frontend**: Static HTML/CSS/JavaScript
+- **Hosting**: Azure Static Web Apps
+- **Domain**: Custom domain integration planned
+
+## Current Implementation
 ### Completed Features
-1. **Content Management System**
-   - Created unified management script (`manage_resume.py`)
-   - Role management system (`update_roles.py`)
-   - Project management system (`update_projects.py`)
-   - JSON-based data storage
-   - Interactive CLI interfaces
-   - Admin authentication system
-   - Virtual environment support
+1. **Website Structure and Design**
+   - Modern, responsive layout
+   - Collapsible sections for better content organization
+   - Professional styling with consistent color scheme
+   - Mobile-friendly design
+   - Optimized section navigation with smooth scrolling
 
-2. **Website Content and Structure**
-   - Comprehensive professional summary
-   - Detailed work history with categorized views
-   - Publications section with proper academic citations
-   - Presentations section with video links and PDF support
-   - Press mentions section
-   - Professional social media integration
-   - Responsive navigation system
-   - Modern, clean UI design
+2. **Content Sections**
+   - Professional Summary (expanded by default)
+   - Work Activity (categorized by Administrative, Clinical, and Academic)
+   - Credentials & Certifications
+   - Publications/Presentations
+   - Volunteer Work/Awards
+   - Social Media Integration
 
-3. **File Structure**
+3. **Interactive Features**
+   - Smart section management (only summary expanded on load)
+   - Smooth scrolling navigation
+   - Category-based work history view
+   - Hash-based navigation support
+   - Collapsible work categories with timeline view
+
+### File Structure
 ```
 cloud-resume-azure/
 ├── frontend/
-│   ├── admin/
-│   │   ├── manage_resume.py     # Main management interface
-│   │   ├── update_roles.py      # Role management system
-│   │   └── update_projects.py   # Project management system
-│   ├── assets/
-│   │   └── presentations/       # Storage for presentation PDFs
-│   ├── data/
-│   │   ├── roles.json           # Role data storage
-│   │   └── projects.json        # Project data storage
+│   ├── index.html              # Main resume page
 │   ├── js/
-│   │   └── work-toggle.js       # Public interface JavaScript
-│   ├── index_template.html      # Template for generation
-│   └── index.html              # Generated website
-├── venv/                       # Python virtual environment
-└── requirements.txt            # Python dependencies
+│   │   └── resume.js           # JavaScript functionality
+│   └── assets/                 # Images and other static assets
+└── README.md
 ```
 
-### Recent Updates
-1. **Publications Section**
-   - Added academic publications with proper citations
-   - Corrected author orders and formatting
-   - Added links to original sources
+## Development Approach
+We've adopted a streamlined approach focusing on:
+1. Direct HTML/CSS implementation for faster development
+2. Single-file architecture for easier maintenance
+3. Built-in styling without external dependencies
+4. Static content for reliable performance
+5. Optimized JavaScript for smooth interactions
 
-2. **Presentations Section**
-   - Added presentation entries with video links
-   - Created structure for PDF slide decks
-   - Added assets directory for presentation materials
+### Benefits of This Approach
+- **Faster Development**: Direct implementation without complex build processes
+- **Easier Maintenance**: All content in one place
+- **Better Performance**: No external dependencies or API calls
+- **Simplified Deployment**: Easy to deploy to Azure Static Web Apps
+- **Enhanced UX**: Smooth navigation and section management
 
-3. **Press Mentions**
-   - Added press coverage from various sources
-   - Chronological organization
-   - Links to original articles
+## Next Steps
+1. **Content Refinement**
+   - [ ] Review and update all section content
+   - [ ] Add any missing work history entries
+   - [ ] Update publications and presentations as needed
 
-4. **Social Media Integration**
-   - Added professional network links
-   - Included profiles from:
-     * Doximity
-     * LinkedIn
-     * X (Twitter)
-     * YouTube
-
-### Next Steps
-1. **Content Updates**
-   - Add presentation PDF slide decks to assets/presentations directory
-   - Consider adding more presentations with corresponding materials
-   - Continue adding press mentions as they become available
-
-2. **Technical Implementation**
-   - Complete Azure infrastructure setup
-   - Implement visitor counter
-   - Configure CI/CD pipeline
-   - Add more roles and projects data
+2. **Azure Deployment**
+   - [ ] Deploy to Azure Static Web Apps
+   - [ ] Configure custom domain
+   - [ ] Set up HTTPS
 
 3. **Future Enhancements**
-   - Consider adding a blog section
-   - Implement dark/light mode toggle
-   - Add print-friendly version
-   - Enhance mobile responsiveness
+   - [ ] Add print-friendly version
+   - [ ] Implement dark/light mode
+   - [ ] Consider adding a blog section
+   - [ ] Add analytics tracking
 
-## Setup Instructions
+## Local Development
+1. Clone the repository
+2. Open `frontend/index.html` in a web browser
+3. Make changes to HTML/CSS/JS as needed
+4. Test locally before deploying
 
-### Data Management Strategy
-Currently, the resume data is hardcoded in `resume.js` due to local development constraints with JSON fetching. This is a temporary solution. The long-term plan involves:
+## Deployment
+Deployment instructions will be added once Azure Static Web Apps setup is complete.
 
-1. **Current Implementation**
-   - Resume data stored directly in `resume.js`
-   - JSON files in `data/` directory (currently unused)
-   - Updates require direct code changes
+## Recent Updates
+- ✅ Optimized section navigation behavior
+- ✅ Improved initial page load experience
+- ✅ Enhanced work section category management
+- ✅ Added smooth scrolling navigation
+- ✅ Implemented hash-based navigation support
 
-2. **Python Management Scripts Status**
-   - Several Python scripts exist in `frontend/admin/`:
-     * `manage_resume.py`: Main management interface
-     * `update_roles.py`: Role management system
-     * `update_projects.py`: Project management system
-   - These scripts are currently inactive as they're designed to work with JSON files
-   - Will be reactivated and updated once Azure infrastructure is in place
-
-3. **Content Management Strategy**
-   - Phase 1 (Current): 
-     * Maintain minimal, essential content in `resume.js`
-     * Hold off on adding extensive new content
-     * Focus on Azure infrastructure setup
-   
-   - Phase 2 (Azure Implementation):
-     * Move data to Azure Blob Storage
-     * Update Python scripts for Azure integration
-     * Implement admin interface
-     * Begin adding comprehensive content through admin panel
-
-4. **Planned Azure Implementation**
-   - Move data to Azure Blob Storage
-   - Implement Azure Functions API for data retrieval
-   - Use Azure CDN for caching and performance
-   - Enable admin panel for easy updates
-
-5. **Migration Path**
-   - Phase 1: Current hardcoded implementation
-   - Phase 2: Azure Functions API + Blob Storage
-   - Phase 3: Admin interface for content management
-   - Phase 4: CI/CD pipeline for automated deployments
-
-This staged approach ensures clean code management and prevents duplicate work during the transition to a full Azure implementation.
-
-### Local Development Setup
-1. Clone the repository:
-   ```bash
-   git clone [repository-url]
-   cd cloud-resume-azure
-   ```
-
-2. Set up Python virtual environment:
-   ```bash
-   python -m venv venv
-   venv\Scripts\activate  # On Windows
-   pip install -r requirements.txt
-   ```
-
-3. Initialize the admin system:
-   ```bash
-   cd frontend/admin
-   python manage_resume.py
-   ```
-   - Follow the prompts to set up your admin password
-   - Use the management interface to add/edit roles and projects
-
-### File Structure Details
-- **index_template.html**: Base template for the resume website
-- **index.html**: Generated website with actual content
-- **roles.json**: Stores role information in categories (Administrative, Clinical, Academic)
-- **manage_resume.py**: Main interface for content management
-
-## Azure Infrastructure Setup
-
-### Storage Account Configuration
-- **Resource Group**: rg-cloud-resume
-- **Storage Account**: sybertresume
-- **Region**: East US 2 (chosen for better availability)
-- **Performance Tier**: Standard
-- **Redundancy**: Locally Redundant Storage (LRS)
-
-### Security & Data Protection
-- Public blob access enabled
-- Soft delete enabled (7 days retention)
-- Version control enabled
-- TLS 1.2 enforced
-- Microsoft-managed encryption keys
-
-### Static Website Hosting
-- Enabled with primary endpoint: https://sybertresume.z20.web.core.windows.net/
-- Configured for index.html
-
-### Infrastructure as Code
-- ARM templates stored in `/infrastructure/storage/`
-  - template.json: Main ARM template
-  - parameters.json: Configuration parameters
-
-### Next Steps
-- [ ] Upload website files to $web container
-- [ ] Configure custom domain
-  - Connect GoDaddy domain to Azure storage endpoint
-  - Set up CNAME record in GoDaddy DNS
-  - Configure SSL/TLS for secure HTTPS
-  - Options for root domain or subdomain (e.g., resume.domain.com)
-- [ ] Set up Azure Functions for visitor counter
-- [ ] Implement CDN for better performance
-
-## Architecture Overview
-
-### 1. Local Management System
-- **Role Management System**
-  - Python-based content management
-  - JSON data storage for role information
-  - HTML template generation
-  - Admin authentication
-  - Features:
-    * Add/remove/update roles
-    * Generate formatted HTML
-    * Maintain career history
-    * Category-based organization (Clinical, Administrative, Academic)
-    * Toggle between categorized and chronological views
-
-### 2. Public Cloud Infrastructure
-- **Frontend (Azure Static Website)**
-  - Generated HTML, CSS, JavaScript
-  - Professional portfolio display
-  - Visitor counter integration
-  - Hosted on Azure Blob Storage
-  - Features:
-    * CDN integration
-    * Custom domain support
-    * SSL/TLS encryption
-
-- **Backend Services**
-  - Azure Functions (Python-based)
-    * Visitor counter endpoint
-    * Simple API for public features
-  - CosmosDB
-    * Store visitor statistics
-    * Basic analytics data
-
-### 3. Workflow Architecture
-```
-Local Management:
-Role Manager (Python) → roles.json → HTML Generation → Deploy to Azure
-                                                          ↓
-Public Access:                                    Azure Blob Storage
-                                                          ↓
-                                                    Visitor Views
-                                                          ↓
-                                                Azure Function Counter
-```
-
-## Technology Stack
-- **Local Management**
-  - Python 3.x
-  - JSON for data storage
-  - Template-based HTML generation
-  - Virtual environment for dependency management
-
-- **Frontend**
-  - HTML5/CSS3
-  - Modern JavaScript
-  - Responsive design
-  - Category/chronological view toggle
-
-- **Cloud Services**
-  - Azure Blob Storage
-  - Azure Functions
-  - Azure CosmosDB
-  - Azure CDN (optional)
-
-- **DevOps**
-  - GitHub
-  - GitHub Actions
-
-## Resources
-- [Azure Static Website Documentation](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website)
-- [Azure Functions Python](https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-python)
-- [Azure CosmosDB](https://docs.microsoft.com/en-us/azure/cosmos-db/)
-
-## Project Status
-- ✅ Local management system implemented
-- ✅ Role management system completed
-- ✅ Admin authentication added
-- ✅ Virtual environment setup
-- ⏳ Azure infrastructure setup in progress
-- ⏳ Visitor counter implementation pending
-- ⏳ CI/CD pipeline configuration pending
+## Status
+- ✅ Basic structure and styling complete
+- ✅ Responsive design implemented
+- ✅ Section navigation optimized
+- ✅ Content organization finalized
+- ⏳ Azure deployment pending

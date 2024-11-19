@@ -14,59 +14,126 @@
     <link rel="canonical" href="https://troysybert.azurewebsites.net/index.html">
     <title>Troy E. Sybert - Healthcare Leadership & Data Science Portfolio</title>
     <style>
-        /*******************************************
-         * Base Styles
-         * Global styles and typography settings
-         *******************************************/
+        /* Base Styles */
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
             color: #333;
+            background-color: #f5f5f5;
         }
-        
-        /*******************************************
-         * Header Section
-         * Styles for the profile header area including
-         * photo and basic information
-         *******************************************/
+
+        /* Header Styles */
         .header {
             background: linear-gradient(to right, #2c3e50, #3498db);
             color: white;
-            padding: 2rem 2rem 0 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            padding: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        
-        /* Profile section layout */
+
         .profile-section {
             display: flex;
             align-items: center;
             gap: 2rem;
             margin-bottom: 1rem;
         }
-        
-        /* Circular profile photo container */
+
         .profile-photo {
-            width: 200px;
-            height: 200px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             border: 4px solid white;
             background: #ccc;
             overflow: hidden;
         }
-        
-        .profile-info {
-            flex-grow: 1;
+
+        .profile-info h1 {
+            margin: 0;
+            font-size: 2.5em;
         }
 
-        /*******************************************
-         * Career Box Section
-         * Styles for the career summary boxes and
-         * experience grid layout
-         *******************************************/
+        .profile-info p {
+            margin: 0.5rem 0;
+            font-size: 1.2em;
+        }
+
+        /* Navigation */
+        .nav-menu {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .section {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .section-header::after {
+            content: '▼';
+            font-size: 0.8em;
+            transition: transform 0.3s ease;
+        }
+
+        .section.collapsed .section-header::after {
+            transform: rotate(-90deg);
+        }
+
+        .section-content {
+            display: block;
+        }
+
+        .section.collapsed .section-content {
+            display: none;
+        }
+
+        /* Career Box */
         .career-box {
             border: 2px solid #3498db;
             border-radius: 8px;
@@ -74,105 +141,649 @@
             margin: 1.5rem 0;
             background: #f8f9fa;
         }
-        
-        /* Career box headings */
-        .career-box h3 {
-            color: #2c3e50;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            font-size: 1.2em;
-        }
-        
-        /* Experience grid layout */
+
         .experience-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
-            margin-bottom: 2rem;
-            text-align: center;
-            font-size: 1.1em;
-            color: #2c3e50;
-            padding: 0 1rem;
+            margin: 1.5rem 0;
         }
 
-        /*******************************************
-         * Skills Section
-         * Grid layout for skills with bullet points
-         *******************************************/
+        .experience-item {
+            text-align: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        /* Skills Grid */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 0.5rem 2rem;
+            gap: 1rem;
             margin-top: 1.5rem;
-            padding: 0 1rem;
-        }
-        
-        /* Individual skill items with bullet points */
-        .skill-item {
-            background: transparent;
-            padding: 0.4rem 0;
-            text-align: left;
-            border: none;
-            font-size: 1em;
-            position: relative;
-            padding-left: 1.2em;
         }
 
-        /*******************************************
-         * Timeline Section
-         * Vertical timeline with dots and lines
-         *******************************************/
+        .skill-item {
+            text-align: left;
+            padding: 0.5rem 1rem;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        /* Timeline */
         .timeline {
             position: relative;
-            padding-left: 2rem;
+            list-style: none;
+            padding-left: 0;
         }
-        
-        /* Vertical line for timeline */
+
         .timeline::before {
+            display: none; /* Removing the continuous vertical line */
+        }
+
+        .timeline-item {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-left: 4px solid #3498db;
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .timeline-item::before {
             content: '';
             position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
+            left: -2rem;
+            top: 0.5rem;
+            width: 1rem;
+            height: 1rem;
+            background: #3498db;
+            border-radius: 50%;
+        }
+
+        /* Credentials */
+        .credentials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        /* Medical licenses specific layout */
+        .medical-licenses .credentials-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .medical-licenses .credential-card {
+            padding: 1rem;
+            font-size: 0.95em;
+        }
+
+        @media (max-width: 1200px) {
+            .medical-licenses .credentials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .medical-licenses .credentials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .credential-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .credential-title {
+            font-size: 1.2em;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .credential-subtitle {
+            color: #3498db;
+            margin-bottom: 0.5rem;
+        }
+
+        .credential-subtitle a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .credential-meta {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        /* Status indicators */
+        .credential-status {
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+
+        .status-active {
+            background-color: #e6f4ea;
+            color: #137333;
+        }
+
+        .status-inactive {
+            background-color: #fce8e6;
+            color: #c5221f;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-menu ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .experience-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 1rem;
+            }
+        }
+
+        /* Work Activity Section Styles */
+        .view-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .view-toggle label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .view-toggle label:hover {
             background: #e9ecef;
         }
-        
-        /* Timeline item dots and content */
-        .timeline-item {
-            position: relative;
+
+        .view-toggle input {
+            margin-right: 5px;
+        }
+
+        /* Work categories */
+        .work-categories {
+            margin-top: 2rem;
+        }
+
+        .work-category {
             margin-bottom: 3rem;
-            padding: 0 0 0.5rem 0;
         }
 
-        /*******************************************
-         * Responsive Design
-         * Media queries for different screen sizes
-         *******************************************/
+        .work-category h3 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 0.5rem 0;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            user-select: none;
+        }
+
+        .work-category h3::after {
+            content: '▼';
+            font-size: 0.8em;
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .work-category.collapsed h3::after {
+            transform: rotate(-90deg);
+        }
+
+        .work-category.collapsed .timeline {
+            display: none;
+        }
+
+        .timeline-item {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-left: 4px solid #3498db;
+        }
+
+        .role-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.3rem;
+        }
+
+        .company-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .company-name {
+            font-size: 1.1em;
+            color: #3498db;
+        }
+
+        .location {
+            color: #666;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+        }
+
+        .location::before {
+            content: '📍';
+            margin-right: 0.5rem;
+        }
+
+        .role-meta {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 1rem;
+        }
+
+        .role-meta .dates::before {
+            content: '🗓';
+            margin-right: 0.5rem;
+        }
+
+        .company-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .job-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .accomplishments {
+            list-style: none;
+            margin: 1rem 0;
+            padding-left: 0;
+        }
+
+        .accomplishments li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .accomplishments li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #3498db;
+        }
+
+        .accomplishments-section h4 {
+            color: #2c3e50;
+            margin-top: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.85em;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 0.3rem;
+        }
+
+        .accomplishments-section ul.accomplishments {
+            margin-top: 0.4rem;
+            font-size: 0.8em;
+        }
+
+        .accomplishments-section ul.accomplishments li {
+            margin-bottom: 0.3rem;
+            line-height: 1.4;
+        }
+
+        /* Work category specific colors */
+        .work-category[data-category="administrative"] .timeline-item {
+            border-left-color: #3498db;
+        }
+
+        .work-category[data-category="clinical"] .timeline-item {
+            border-left-color: #2ecc71;
+        }
+
+        .work-category[data-category="academic"] .timeline-item {
+            border-left-color: #9b59b6;
+        }
+
+        /* Work category headers */
+        .work-category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 0.5rem 0;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .work-category-header h3 {
+            margin: 0;
+            color: #2c3e50;
+            font-size: 1.4em;
+        }
+
+        .work-category-toggle {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .work-category-toggle svg {
+            fill: #2c3e50;
+        }
+
+        .work-category.collapsed .work-category-toggle {
+            transform: rotate(-90deg);
+        }
+
+        .work-category[data-category="administrative"] .work-category-header {
+            border-bottom-color: #3498db;
+        }
+
+        .work-category[data-category="clinical"] .work-category-header {
+            border-bottom-color: #2ecc71;
+        }
+
+        .work-category[data-category="academic"] .work-category-header {
+            border-bottom-color: #9b59b6;
+        }
+
+        /* Work category headers and content */
+        .work-category {
+            margin-bottom: 20px;
+        }
+
+        .work-category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 0.5rem 0;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .timeline {
+            display: block;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .work-category.collapsed .timeline {
+            display: none;
+            opacity: 0;
+        }
+
+        .work-category-toggle {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .work-category.collapsed .work-category-toggle {
+            transform: rotate(-90deg);
+        }
+
+        /* View toggle styles */
+        .view-toggle {
+            margin-bottom: 20px;
+        }
+
+        .view-toggle label {
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
+        .view-toggle input {
+            margin-right: 5px;
+        }
+
+        /* View visibility */
+        .work-categories {
+            display: none;
+        }
+
+        .work-categories.active {
+            display: block;
+        }
+
+        /* Chronological view styles */
+        .work-category[data-years="2020-Present"] .work-category-header {
+            border-bottom: 2px solid #2ecc71;  /* Vibrant green for current */
+            background: linear-gradient(to right, rgba(46, 204, 113, 0.1), transparent);
+        }
+
+        .work-category[data-years="2015-2019"] .work-category-header {
+            border-bottom: 2px solid #3498db;  /* Blue for recent past */
+            background: linear-gradient(to right, rgba(52, 152, 219, 0.1), transparent);
+        }
+
+        .work-category[data-years="2010-2014"] .work-category-header {
+            border-bottom: 2px solid #9b59b6;  /* Purple for mid past */
+            background: linear-gradient(to right, rgba(155, 89, 182, 0.1), transparent);
+        }
+
+        .work-category[data-years="2003-2009"] .work-category-header {
+            border-bottom: 2px solid #e67e22;  /* Orange for earliest */
+            background: linear-gradient(to right, rgba(230, 126, 34, 0.1), transparent);
+        }
+
+        /* Continued role styles */
+        .timeline-item.continued {
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            border-left: 3px solid #dcdde1;
+            background-color: #f8f9fa;
+        }
+
+        .timeline-item.continued .role-title {
+            font-size: 0.95em;
+            color: #2c3e50;
+            margin-bottom: 2px;
+        }
+
+        .timeline-item.continued .company-name {
+            font-size: 0.9em;
+            color: #34495e;
+        }
+
+        .timeline-item.continued .dates {
+            font-size: 0.85em;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        .timeline-item.continued::before {
+            display: none;
+        }
+
+        /* Presentation Resources */
+        .presentation-resources {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .resource-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #2c3e50;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+
+        .resource-link svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .resource-link:hover {
+            color: #3498db;
+        }
+
+        /* Social Media */
+        .social-media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-media-item a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #2c3e50;
+            text-decoration: none;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .social-media-icon {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .social-media-item a:hover {
+            background-color: #f5f5f5;
+            color: #3498db;
+        }
+
+        /* Volunteer Work Section Styles */
+        .volunteer-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .volunteer-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .volunteer-list li {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .volunteer-list li:hover {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+
+        .volunteer-role {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .volunteer-meta {
+            font-size: 0.9em;
+            color: #666;
+            margin: 0.2rem 0;
+        }
+
+        .volunteer-date {
+            font-size: 0.85em;
+            color: #888;
+        }
+
         @media (max-width: 768px) {
-            /* Mobile grid layouts */
-            .experience-grid, 
-            .skills-grid,
-            .credentials-grid {
+            .volunteer-grid {
                 grid-template-columns: 1fr;
-                gap: 1rem;
             }
         }
 
-        /*******************************************
-         * Browser Compatibility
-         * Fallbacks for older browsers
-         *******************************************/
-        @supports not (display: grid) {
-            .experience-grid, .skills-grid, .credentials-grid {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-between;
-            }
-            /* Fallback column sizes */
-            .experience-grid > * {
-                flex: 0 1 calc(33.333% - 1rem);
-                margin-bottom: 1rem;
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .awards-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .awards-list li {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .awards-list li:hover {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+
+        .award-title {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .award-meta {
+            font-size: 0.9em;
+            color: #666;
+            margin: 0.2rem 0;
+        }
+
+        .award-date {
+            font-size: 0.85em;
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            .awards-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -192,11 +803,10 @@
             <ul>
                 <li><a href="#summary">Summary</a></li>
                 <li><a href="#work">Work Activity</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#credentials">Credentials</a></li>
-                <li><a href="#publications">Publications/Presentations</a></li>
-                <li><a href="#volunteer">Volunteer Work/Awards</a></li>
-                <li><a href="#social">Social Media</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#volunteer">Volunteer/Awards</a></li>
+                <li><a href="#social">Social</a></li>
             </ul>
         </nav>
     </header>
@@ -245,25 +855,35 @@
             <div class="section-content">
                 <div class="view-toggle">
                     <label>
-                        <input type="radio" name="view" id="view-categorized" checked>
+                        <input type="radio" name="view" value="categorized" checked>
                         Categorized View
                     </label>
                     <label>
-                        <input type="radio" name="view" id="view-chronological">
+                        <input type="radio" name="view" value="chronological">
                         Chronological View
                     </label>
                 </div>
 
-                <div class="work-categories">
+                <!-- Categorized View -->
+                <div class="work-categories view-categorized active">
                     <div class="work-category" data-category="administrative">
-                        <h3>Administrative</h3>
+                        <div class="work-category-header">
+                            <h3>Administrative</h3>
+                            <div class="work-category-toggle">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
+                                </svg>
+                            </div>
+                        </div>
                         <div class="timeline">
                             <div class="timeline-item" data-category="administrative" data-date="2023-05">
                                 <div class="role-title">Physician Informaticist</div>
-                                <div class="company-name">Veteran's Affairs</div>
+                                <div class="company-meta">
+                                    <div class="company-name">Veteran's Affairs</div>
+                                    <div class="location">Washington D.C.</div>
+                                </div>
                                 <div class="role-meta">
                                     <span class="dates">May 2023 - Present</span>
-                                    <span class="location">Washington D.C.</span>
                                 </div>
                                 <div class="company-description">
                                     The Veterans Health Administration is America's largest integrated health care system, providing care at 1,380 health care facilities, including 170 medical centers and 1,193 outpatient sites of care of varying complexity (VHA outpatient clinics), serving 9.1 million enrolled Veterans each year. 
@@ -272,35 +892,400 @@
                                     This role serves as Veterans Health Administration's subject matter and policy expert on foundational methods and capabilities to support patient safety and health information systems for the delivery of healthcare. This position supports and collaborates with clinicians, researchers, educators, technical staff, and administrators in other VA Central Office programs, VA field facilities, other federal agencies, and the private sector.
                                 </div>
                                 <ul class="accomplishments">
-                                    <li>participated in the creation of a dashboard to assess provider order alerts</li>
-                                    <li>ontributed to multidisciplinary team in assessing orphan codes in the EMR</li>
+                                    <li>Participated in the creation of a dashboard to assess provider order alerts</li>
+                                    <li>Contributed to multidisciplinary team in assessing orphan codes in the EMR</li>
+                                </ul>
+                            </div>
+                            <div class="timeline-item" data-category="administrative" data-date="2018-11">
+                                <div class="role-title">Chief Medical Officer</div>
+                                <div class="company-meta">
+                                    <div class="company-name">American Academic Health System</div>
+                                    <div class="location">Philadelphia, PA</div>
+                                </div>
+                                <div class="role-meta">
+                                    <span class="dates">November 2018 - March 2019</span>
+                                </div>
+                                <div class="company-description">
+                                    With both Hahnemann University Hospital and St Christopher Hospital, AAHS was a premier inner city academic medical center in the heart of Philadelphia. My departure from this organization was a result of the primary hospital closing operations.
+                                </div>
+                                <div class="job-description">
+                                    Responsible for quality/safety and medical staff affairs. In addition, had direct leadership over multiple departments including Information Technology, Case Management, and Health Information Management.
+                                </div>
+                                <ul class="accomplishments">
+                                    <li>Served as an interim CIO during an IT transition</li>
+                                    <li>Responsible for Physician Advisor Program for Revenue Cycle, seeing an improvement in documentation leading to CMI increases (1.4 to 1.7) through realigning UR program/partnering with physicians</li>
+                                    <li>Served as liaison between medical staff and hospital leadership</li>
+                                </ul>
+                            </div>
+                            <div class="timeline-item" data-category="administrative" data-date="2016-05">
+                                <div class="role-title">CEO/Consultant</div>
+                                <div class="company-meta">
+                                    <div class="company-name">TroyMD Wellness, PLLC</div>
+                                    <div class="location">Johnson City, TN</div>
+                                </div>
+                                <div class="role-meta">
+                                    <span class="dates">May 2016 - March 2023</span>
+                                </div>
+                                <div class="company-description">
+                                    This company was created by me to provide executive/consultative services to various clients.
+                                </div>
+                                <div class="job-description">
+                                    As CEO and consultant, I provided services to a variety of clients. Client names are available on request. Various interim roles include CMO, CIO, COO, Physician Advisor, Informaticist, Regional President, and Medical Director.
+                                </div>
+                                <div class="accomplishments-section">
+                                    <h4>Quality/Safety/Service</h4>
+                                    <ul class="accomplishments">
+                                        <li>Responsible for assessing the status of quality/service and developing a plan to improve national standings</li>
+                                        <li>Focused engagement for developing the strategy and 3 use cases for the healthcare vertical of a technology company using wearable technology</li>
+                                        <li>In-kind Medical Director for community-based business coalition promoting healthy lifestyles (HealthyKingsport.org)</li>
+                                        <li>Worked with major theme park on COVID reopening strategy</li>
+                                        <li>Deployed a Continuous Improvement initiative in partnership with the parent organization</li>
+                                        <li>Assessment of quality/service and communication/leadership development supporting physician and administrative leaders in large academic hospital</li>
+                                    </ul>
+
+                                    <h4>Leadership Development/Contracting</h4>
+                                    <ul class="accomplishments">
+                                        <li>Developed comprehensive physician engagement and communication plan for multiple medical staffs</li>
+                                        <li>Creation of mortality review program/sepsis care improvement program</li>
+                                        <li>Physician Advisor for leadership development, clinical and technology solutions review, medical analytics</li>
+                                        <li>Led recruitment efforts signing 8 hospitalists, 3 medical directors, and 4 ER physicians</li>
+                                        <li>Conducted physician contract overhaul resulting in savings close to $1 million dollars</li>
+                                    </ul>
+
+                                    <h4>Operations/Revenue Cycle</h4>
+                                    <ul class="accomplishments">
+                                        <li>Service line strategic development including hospitalist, ER, vascular surgery, interventional radiology, primary care, behavioral health, and virtual health</li>
+                                        <li>Throughput assessment and execution improving aLOS from 5.9 to 5.1 utilizing Clinical Documentation Improvement (CDI) program development</li>
+                                        <li>Significant increase in provider revenue through improved contract management and productivity gains; Cost-savings of greater than $1 million through restructuring over 1st year</li>
+                                        <li>Company-wide Revenue improvement using A3/Six Sigma</li>
+                                        <li>Implemented data governance and analytics strategy</li>
+                                        <li>Interim COO/CMO responsible for bankruptcy navigation and corporate integrity agreement compliance, while optimizing operations, contracting, and supply chain</li>
+                                    </ul>
+
+                                    <h4>Information Technology</h4>
+                                    <ul class="accomplishments">
+                                        <li>Data strategy/data governance implementation</li>
+                                        <li>Multiple performance improvement initiatives focused on data-driven methodologies</li>
+                                        <li>EMR deployment/optimizations: Epic (case management/revenue cycle), Athena deployment (2 instances), Credible analytics and provider documentation</li>
+                                        <li>Transitioning and optimizing IT departments/systems and establishing cost-savings through contract management</li>
+                                        <li>Interim CIO transition focused on optimizing IT systems and establishing cost-savings through contract management at large academic hospital and outpatient surgery centers</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="timeline-item" data-category="administrative" data-date="2014-09">
+                                <div class="role-title">Executive Vice President, Chief Medical Officer</div>
+                                <div class="company-meta">
+                                    <div class="company-name">Capella Health System</div>
+                                    <div class="location">Nashville, TN</div>
+                                </div>
+                                <div class="role-meta">
+                                    <span class="dates">September 2014 - October 2015</span>
+                                </div>
+                                <div class="company-description">
+                                    Capella had emerged as a national leader in the development and operation of rural and community healthcare facilities across the United States with 12 acute care facilities as well as several outpatient operations across 7 states. My choice to leave this organization was the result of it being acquired.
+                                </div>
+                                <div class="job-description">
+                                    This role, reporting to the System CEO, had responsibility for all quality and service excellence initiatives as well as ensuring that physician leaders are continuously involved in shaping the company's vision and future strategies.
+                                </div>
+                                <ul class="accomplishments">
+                                    <li>Led the development of the corporate strategy of quality and safety with the National Physician Leadership Group, which was the platform of physician engagement across the spectrum of the hospitals</li>
+                                    <li>Developed and deployed a national physician leadership development program</li>
+                                    <li>Led multiple performance improvement initiatives resulting in over $200,000 of savings and better care</li>
+                                    <li>Served on oversight committee of (Medical Univ South Carolina) MUSC-Capella Network, charged with improving regional care via population health strategies, service line development strategies, and Quality Improvement Strategies, integrating medical staff into the newly formed academic-private relationship</li>
+                                    <li>Responsible for deploying the use of Crimson data to drive improvement efforts across many opportunities. Managed the Advisory Board contract along with a Performance Improvement Program across all hospitals</li>
+                                </ul>
+                            </div>
+                            <div class="timeline-item" data-category="administrative" data-date="2010-03">
+                                <div class="role-title">System Vice President, Chief Quality and Medical Information Officer</div>
+                                <div class="company-meta">
+                                    <div class="company-name">Wellmont Health System</div>
+                                    <div class="location">Kingsport, TN</div>
+                                </div>
+                                <div class="role-meta">
+                                    <span class="dates">March 2010 - September 2014</span>
+                                </div>
+                                <div class="company-description">
+                                    Wellmont is an integrated health care delivery system providing inpatient, outpatient and other health care services at multiple locations in Northeast Tennessee and Southwest Virginia, ranking consistently in best of class in CareChex and as BlueCross Blue Shield Distinction Centers.
+                                </div>
+                                <div class="job-description">
+                                    This role, reporting to the System COO, had responsibilities including operations in quality, safety, service, education, and information technology. Managed a budget of ~$5 million dollars and 55 FTEs.
+                                </div>
+                                <ul class="accomplishments">
+                                    <li>Developed governance structure around change management used for system-wide decision-making for 7 hospitals and 5 medical staffs</li>
+                                    <li>Multiple process improvement projects, including the overhaul of the root cause analysis process which resulted in ~7% reduction in safety events system-wide</li>
+                                    <li>Enterprise optimization and deployment of 2 EMRs (McKesson and Epic), resulting in maximum incentive dollars totaling > $40 million dollars</li>
+                                    <li>Contract/vendor management to include numerous software vendors (Epic, Press Ganey, and Comparion)</li>
+                                </ul>
+                            </div>
+                            <div class="timeline-item" data-category="administrative" data-date="2006-07">
+                                <div class="role-title">Chief Medical Officer, Hospital and Clinic</div>
+                                <div class="company-meta">
+                                    <div class="company-name">University of Texas Medical Branch</div>
+                                    <div class="location">Galveston, TX</div>
+                                </div>
+                                <div class="role-meta">
+                                    <span class="dates">July 2006 - March 2010</span>
+                                </div>
+                                <div class="company-description">
+                                    The 84-acre campus includes 4 schools, 3 institutes for advanced study, a major medical library, a network of hospitals and clinics that provide a full range of primary and specialized medical care.
+                                </div>
+                                <div class="job-description">
+                                    My role covered both the hospital and clinic operation of the Texas Department of Criminal Justice/Correctional Managed Care (TDCJ/CMC) Campus.
+                                </div>
+                                <ul class="accomplishments">
+                                    <li>Created a 12 doc/4 midlevel provider group that managed hospital and skilled nursing patients</li>
+                                    <li>Developed and managed, including the budget, the skilled nursing and obs units</li>
+                                    <li>Oversaw robust UR program as well as multiple quality and safety projects</li>
+                                    <li>Most specialties represented with ~40,000 visits per year (includes ~6 to 7k visits annually of telehealth) delivering about $14 million in revenue to the Faculty Group Practice</li>
+                                    <li>Focused on workflows within the clinic, coordination with Hospital operations and PCPs in the prison facilities, subspecialty UR Program, relationship management with chair/chiefs of all departments</li>
+                                    <li>Focused on quality outcomes of delays in care, reduction in unnecessary visits, and provider satisfaction</li>
+                                    <li>~150,000 lives covered in an early ACO-like model</li>
+                                    <li>Disaster Preparedness, including the transitioning of the location of operations of Hospital and Clinics in the wake of Hurricane Ike</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     
                     <div class="work-category" data-category="clinical">
-                        <h3>Clinical</h3>
+                        <div class="work-category-header">
+                            <h3>Clinical</h3>
+                            <div class="work-category-toggle">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
+                                </svg>
+                            </div>
+                        </div>
                         <div class="timeline">
-                            <!-- Timeline items will be added here -->
+                            <div class="timeline-item" data-category="clinical" data-date="2023-05">
+                                <div class="role-title">Primary Care/Chief Perioperative Medicine</div>
+                                <div class="company-meta">
+                                    <div class="company-name">James H. Quillen Medical Center</div>
+                                    <div class="location">Johnson City, TN</div>
+                                </div>
+                                <div class="role-meta">
+                                    <span class="dates">May 2023 - May 2024</span>
+                                </div>
+                                <div class="job-description">
+                                    Typical clinical duties
+                                </div>
+                            </div>
+                            <div class="timeline-item" data-category="clinical" data-date="2023-08">
+                                <div class="role-title">CEO/Physician</div>
+                                <div class="company-meta">
+                                    <div class="company-name">Partners for Health, PLLC</div>
+                                    <div class="location">Johnson City, TN</div>
+                                </div>
+                                <div class="role-meta">
+                                    <span class="dates">August 2023 - Present</span>
+                                </div>
+                                <div class="company-description">
+                                    Partners for Health is a company I created to work with a local recovery center in serving their basic primary care needs. They are a 12 month residential recovery center and I provide medical director and physician services for them.
+                                </div>
+                                <div class="job-description">
+                                    I serve as a primary care physician in addition to serving as a medical director for their overall program, including their Intensive Outpatient Program.
+                                </div>
+                                <ul class="accomplishments">
+                                    <li>Established online model of care to serve 2 distinct locations across the state of Tennessee</li>
+                                    <li>Facilitated with contracting as we created an Intensive Outpatient Program</li>
+                                </ul>
+                            </div>
+                            <div class="timeline-item" data-category="clinical" data-date="2021-02">
+                                <div class="role-title">Primary Care Physician</div>
+                                <div class="company-meta">
+                                    <div class="company-name">HealthyMe PLLC</div>
+                                    <div class="location">Johnson City, TN</div>
+                                </div>
+                                <div class="role-meta">
+                                    <span class="dates">February 2021 - December 2021</span>
+                                </div>
+                                <div class="job-description">
+                                    I started my own primary care clinic.
+                                </div>
+                            </div>
+                            <div class="timeline-item" data-category="clinical" data-date="2018-06">
+                                <div class="role-title">Primary Care Physician</div>
+                                <div class="company-meta">
+                                    <div class="company-name">Medical Care PLLC</div>
+                                    <div class="location">Elizabethton, TN</div>
+                                </div>
+                                <div class="role-meta">
+                                    <span class="dates">June 2018 - October 2018</span>
+                                </div>
+                                <div class="job-description">
+                                    This role was a full-time clinical position and ended when I got a job as CMO at AAHS.
+                                </div>
+                            </div>
+                            <div class="timeline-item" data-category="clinical" data-date="2006-07">
+                                <div class="role-title">Hospitalist</div>
+                                <div class="company-meta">
+                                    <div class="company-name">University of Texas Medical Branch</div>
+                                    <div class="location">Galveston, TX</div>
+                                </div>
+                                <div class="role-meta">
+                                    <span class="dates">July 2006 - March 2010</span>
+                                </div>
+                                <div class="job-description">
+                                    This correctional medicine position started as 80% to 90% clinical while I recruited to build a hospitalist program. After the first year, I became the CMO of the Texas Department of Criminal Justice Hospital with about 75% clinical. At the time of my departure, I was 50% clinical.
+                                </div>
+                            </div>
+                            <div class="timeline-item" data-category="clinical" data-date="2006-01">
+                                <div class="role-title">Hospitalist-Locums</div>
+                                <div class="company-meta">
+                                    <div class="company-name">EnhanceMed, Mayo Clinic</div>
+                                    <div class="location">Rochester, MN</div>
+                                </div>
+                                <div class="role-meta">
+                                    <span class="dates">January 2006 - June 2006</span>
+                                </div>
+                                <div class="job-description">
+                                    In this role, I provided coverage on the weekends for outlying hospitals.
+                                </div>
+                            </div>
+                            <div class="timeline-item" data-category="clinical" data-date="2003-12">
+                                <div class="role-title">Physician</div>
+                                <div class="company-meta">
+                                    <div class="company-name">Cornerstone Hospital Sterling Healthcare</div>
+                                    <div class="location">Webster, TX</div>
+                                </div>
+                                <div class="role-meta">
+                                    <span class="dates">December 2003 - January 2007</span>
+                                </div>
+                                <div class="job-description">
+                                    In this role with this long-term acute care facility (LTAC), I provided night and weekend coverage during electives and didactic periods in my residency and graduate studies.
+                                </div>
+                            </div>
+                            <div class="timeline-item" data-category="clinical" data-date="2003-12">
+                                <div class="role-title">Physician</div>
+                                <div class="company-meta">
+                                    <div class="company-name">Galveston County Health District</div>
+                                    <div class="location">Galveston, TX</div>
+                                </div>
+                                <div class="role-meta">
+                                    <span class="dates">December 2003 - June 2005</span>
+                                </div>
+                                <div class="job-description">
+                                    In this role with this federally qualified health center, I provided primary care and urgent care coverage services through our county health district.
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <div class="work-category" data-category="academic">
-                        <h3>Academic</h3>
+                        <div class="work-category-header">
+                            <h3>Academic</h3>
+                            <div class="work-category-toggle">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
+                                </svg>
+                            </div>
+                        </div>
                         <div class="timeline">
-                            <!-- Timeline items will be added here -->
+                            <div class="timeline-item" data-category="academic" data-date="2014">
+                                <div class="role-title">Adjunct Faculty, Part-Time</div>
+                                <div class="company-meta">
+                                    <div class="company-name"><a href="https://www.king.edu/" target="_blank" rel="noopener noreferrer">King University</a></div>
+                                    <div class="location">Bristol, TN</div>
+                                </div>
+                                <div class="role-meta">
+                                    <span class="dates">2014 - 2017</span>
+                                </div>
+                                <div class="job-description">
+                                    Develop and taught courses in the Health Administration Program
+                                </div>
+                                <ul class="accomplishments">
+                                    <li>Course development for "Current Topics in Health Informatics" and "Healthcare Information Systems"</li>
+                                    <li>Designed and taught curriculum</li>
+                                </ul>
+                            </div>
+                            <div class="timeline-item" data-category="academic" data-date="2012">
+                                <div class="role-title">Adjunct Faculty, Part-Time</div>
+                                <div class="company-meta">
+                                    <div class="company-name"><a href="https://www.etsu.edu/cph/" target="_blank" rel="noopener noreferrer">East Tennessee State University, College of Public Health</a></div>
+                                    <div class="location">Johnson City, TN</div>
+                                </div>
+                                <div class="role-meta">
+                                    <span class="dates">2012 - 2014</span>
+                                </div>
+                                <div class="job-description">
+                                    Provided occasional lectures and practicum opportunities for master's public health students.
+                                </div>
+                                <ul class="accomplishments">
+                                    <li>Course development and teaching of Healthcare Administration and Leadership</li>
+                                </ul>
+                            </div>
+                            <div class="timeline-item" data-category="academic" data-date="2006">
+                                <div class="role-title">Assistant Professor, Internal Medicine, Full Time</div>
+                                <div class="company-meta">
+                                    <div class="company-name"><a href="https://www.utmb.edu/" target="_blank" rel="noopener noreferrer">University of Texas Medical Branch</a></div>
+                                    <div class="location">Galveston, TX</div>
+                                </div>
+                                <div class="role-meta">
+                                    <span class="dates">2006 - 2010</span>
+                                </div>
+                                <div class="job-description">
+                                    Teaching responsibilities for clinical and didactic activities.
+                                </div>
+                                <ul class="accomplishments">
+                                    <li>Practicum and course development: Healthcare Administration and Leadership</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="section" id="portfolio">
-            <div class="section-header">Consulting/Project Portfolio</div>
-            <div class="section-content">
-                <div class="timeline">
-                    <!-- Portfolio items will be added here -->
+                <!-- Chronological View -->
+                <div class="work-categories view-chronological">
+                    <div class="work-category" data-years="2020-Present">
+                        <div class="work-category-header">
+                            <h3>2020 - Present</h3>
+                            <div class="work-category-toggle">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M7 10l5 5 5-5z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="timeline">
+                        </div>
+                    </div>
+
+                    <div class="work-category" data-years="2015-2019">
+                        <div class="work-category-header">
+                            <h3>2015 - 2019</h3>
+                            <div class="work-category-toggle">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M7 10l5 5 5-5z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="timeline">
+                        </div>
+                    </div>
+
+                    <div class="work-category" data-years="2010-2014">
+                        <div class="work-category-header">
+                            <h3>2010 - 2014</h3>
+                            <div class="work-category-toggle">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M7 10l5 5 5-5z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="timeline">
+                        </div>
+                    </div>
+
+                    <div class="work-category" data-years="2003-2009">
+                        <div class="work-category-header">
+                            <h3>2003 - 2009</h3>
+                            <div class="work-category-toggle">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M7 10l5 5 5-5z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="timeline">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -354,43 +1339,45 @@
                         </div>
                     </div>
 
-                    <h3>Medical Licenses</h3>
-                    <div class="credentials-grid">
-                        <div class="credential-card">
-                            <div class="credential-title">Medical License #46875</div>
-                            <div class="credential-subtitle">
-                                <a href="https://apps.health.tn.gov/Licensure/default.aspx" target="_blank" rel="noopener noreferrer">Tennessee Medical Board</a>
+                    <div class="medical-licenses">
+                        <h3>Medical Licenses</h3>
+                        <div class="credentials-grid">
+                            <div class="credential-card">
+                                <div class="credential-title">Medical License #46875</div>
+                                <div class="credential-subtitle">
+                                    <a href="https://apps.health.tn.gov/Licensure/default.aspx" target="_blank" rel="noopener noreferrer">Tennessee Medical Board</a>
+                                </div>
+                                <div class="credential-meta">
+                                    <span class="credential-status status-active">Active</span>
+                                    <div>Expires: November 30, 2024</div>
+                                </div>
                             </div>
-                            <div class="credential-meta">
-                                <span class="credential-status status-active">Active</span>
-                                <div>Expires: November 30, 2024</div>
+                            <div class="credential-card">
+                                <div class="credential-title">Medical License #L7208</div>
+                                <div class="credential-subtitle">
+                                    <a href="https://www.tmb.state.tx.us/page/look-up-a-license" target="_blank" rel="noopener noreferrer">Texas Medical Board</a>
+                                </div>
+                                <div class="credential-meta">
+                                    <span class="credential-status status-active">Active</span>
+                                    <div>Expires: February 28, 2026</div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="credential-card">
-                            <div class="credential-title">Medical License #L7208</div>
-                            <div class="credential-subtitle">
-                                <a href="https://www.tmb.state.tx.us/page/look-up-a-license" target="_blank" rel="noopener noreferrer">Texas Medical Board</a>
+                            <div class="credential-card">
+                                <div class="credential-title">DEA Registration</div>
+                                <div class="credential-subtitle">Drug Enforcement Administration</div>
+                                <div class="credential-meta">
+                                    <span class="credential-status status-active">Active</span>
+                                    <div>Expires: February 28, 2027</div>
+                                </div>
                             </div>
-                            <div class="credential-meta">
-                                <span class="credential-status status-active">Active</span>
-                                <div>Expires: February 28, 2026</div>
-                            </div>
-                        </div>
-                        <div class="credential-card">
-                            <div class="credential-title">DEA Registration</div>
-                            <div class="credential-subtitle">Drug Enforcement Administration</div>
-                            <div class="credential-meta">
-                                <span class="credential-status status-active">Active</span>
-                                <div>Expires: February 28, 2027</div>
-                            </div>
-                        </div>
-                        <div class="credential-card">
-                            <div class="credential-title">Historical Licensure</div>
-                            <div class="credential-meta">
-                                <span class="credential-status status-inactive">Inactive</span>
-                                <div class="previous-licenses" style="margin-top: 0.2rem; padding-top: 0.2rem;">
-                                    <div>North Carolina Medical Board</div>
-                                    <div>Minnesota Medical Board</div>
+                            <div class="credential-card">
+                                <div class="credential-title">Historical Licensure</div>
+                                <div class="credential-meta">
+                                    <span class="credential-status status-inactive">Inactive</span>
+                                    <div class="previous-licenses" style="margin-top: 0.2rem; padding-top: 0.2rem;">
+                                        <div>North Carolina Medical Board</div>
+                                        <div>Minnesota Medical Board</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -479,7 +1466,12 @@
                                     Sybert TE. Big Data. Big Changes. What's the Big Idea? 
                                     <a href="https://pubmed.ncbi.nlm.nih.gov/25558523/" target="_blank" rel="noopener noreferrer">
                                     Tennessee Medicine</a>. 2014;107(6):21-23. PMID: 25558523.
-                                    <span class="publication-date">Published Winter 2014</span>
+                                    <span class="publication-date">Published June 2014</span>
+                                </li>
+                                <li>
+                                    Sybert TE, Philips BU. Observations on the State of Colorectal Cancer Screening in the Hispanic Population (Thesis). 
+                                    University of Texas School of Biomedical Sciences. Galveston, TX.
+                                    <span class="publication-date">May 2005</span>
                                 </li>
                                 <li>
                                     Liu J, Sybert TE, Qian Y, Liu F. Effects of thalidomide on rat embryonic DNA synthesis in vitro. 
@@ -498,17 +1490,17 @@
                             <h3>Presentations</h3>
                             <ul class="presentation-list">
                                 <li>
-                                    "Provider Engagement Framework: Building Intrinsic Motivation Through Autonomy, Purpose, and Mastery."
+                                    "Organizational Change via Provider Engagement"
                                     <a href="https://youtu.be/O3jceG53nCw?si=MIBTWPPOBrqLVu5m" target="_blank" rel="noopener noreferrer">
-                                    mhca Summer Conference, Raleigh, NC</a>.
+                                    Mental Health Corporation of America (MHCA) Summer Conference, Raleigh, NC</a>.
                                     <span class="presentation-date">August 2022</span>
                                     <div class="presentation-description">
                                         A presentation on a Provider Engagement Framework built around autonomy, purpose, and mastery leading to intrinsic motivation, including a data-driven change model and its application at Monarch.
                                     </div>
                                     <div class="presentation-resources">
-                                        <a href="assets/presentations/provider-engagement-framework.pdf" target="_blank" rel="noopener noreferrer" class="resource-link">
+                                        <a href="assets/presentations/August2022.pdf" target="_blank" rel="noopener noreferrer" class="resource-link">
                                             <svg viewBox="0 0 24 24">
-                                                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M13,13V19H15V13H19L16,10L13,13M11,11V17H9V11H5L8,8L11,11Z"/>
+                                                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M13,13V19H15V13H19L16,10L13,13Z"/>
                                             </svg>
                                             Slide Deck (PDF)
                                         </a>
@@ -519,6 +1511,42 @@
                                             Watch Presentation
                                         </a>
                                     </div>
+                                </li>
+                                <li>
+                                    "People and Programs: A Management Philosophy"
+                                    EPIC National Users Forum, Verona, WI.
+                                    <span class="presentation-date">August 2013</span>
+                                    <div class="presentation-resources">
+                                        <a href="assets/presentations/August2013.pdf" target="_blank" rel="noopener noreferrer" class="resource-link">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M13,13V19H15V13H19L16,10L13,13Z"/>
+                                            </svg>
+                                            Slide Deck (PDF)
+                                        </a>
+                                    </div>
+                                </li>
+                                <li>
+                                    "Creating a Technology Singularity in Your Organization"
+                                    University of Virginia-Wise Symposium, Wise, VA.
+                                    <span class="presentation-date">October 2010</span>
+                                    <div class="presentation-resources">
+                                        <a href="assets/presentations/October2010.pdf" target="_blank" rel="noopener noreferrer" class="resource-link">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M13,13V19H15V13H19L16,10L13,13Z"/>
+                                            </svg>
+                                            Slide Deck (PDF)
+                                        </a>
+                                    </div>
+                                </li>
+                                <li>
+                                    "Negative Predictor Variables in Colorectal Cancer Screening in Hispanic and non-Hispanic Whites"
+                                    American College of Physicians Regional Meeting, Galveston, TX.
+                                    <span class="presentation-date">May 2005</span>
+                                </li>
+                                <li>
+                                    "Comparison of Recommendations Targeted Towards High-risk Groups in Cancer Screening Guidelines"
+                                    American College of Preventive Medicine National Meeting, Orlando, FL.
+                                    <span class="presentation-date">February 2004</span>
                                 </li>
                             </ul>
 
@@ -553,7 +1581,83 @@
             <div class="section-header">Volunteer Work/Awards</div>
             <div class="section-content">
                 <div class="timeline">
-                    <!-- Volunteer work and awards content will be added here -->
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Volunteer Work</h3>
+                            <div class="volunteer-grid">
+                                <div>
+                                    <ul class="volunteer-list">
+                                        <li>
+                                            <div class="volunteer-role">Tennessee Health Information Technology Committee</div>
+                                            <div class="volunteer-meta">Governor Appointed</div>
+                                            <span class="volunteer-date">2015 - 2016</span>
+                                        </li>
+                                        <li>
+                                            <div class="volunteer-role">Tennessee Medical Association</div>
+                                            <div class="volunteer-meta">Physician Services Advisory Panel</div>
+                                            <span class="volunteer-date">2014 - 2016</span>
+                                        </li>
+                                        <li>
+                                            <div class="volunteer-role">American College of Preventive Medicine</div>
+                                            <div class="volunteer-meta">Health Systems Task Force Member</div>
+                                            <span class="volunteer-date">2014 - 2016</span>
+                                        </li>
+                                        <li>
+                                            <div class="volunteer-role">Federation of American Hospitals</div>
+                                            <div class="volunteer-meta">Quality Committee of the Board, Member</div>
+                                            <span class="volunteer-date">2014 - 2015</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul class="volunteer-list">
+                                        <li>
+                                            <div class="volunteer-role">East Tennessee State University</div>
+                                            <div class="volunteer-meta">Health Services Management & Policy Professional Advisory Committee</div>
+                                            <span class="volunteer-date">2013 - 2014</span>
+                                        </li>
+                                        <li>
+                                            <div class="volunteer-role">Health Information Partnership for Tennessee</div>
+                                            <div class="volunteer-meta">Member</div>
+                                            <span class="volunteer-date">2011</span>
+                                        </li>
+                                        <li>
+                                            <div class="volunteer-role">Coalition for Statewide Health Literacy</div>
+                                            <div class="volunteer-meta">Facilitator, St. Paul, MN</div>
+                                            <span class="volunteer-date">November 2005 - February 2006</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h3>Awards & Recognition</h3>
+                            <div class="awards-grid">
+                                <div>
+                                    <ul class="awards-list">
+                                        <li>
+                                            <div class="award-title">Start-Up TriCities Pitches and Pints</div>
+                                            <div class="award-meta">2nd Place</div>
+                                            <span class="award-date">2016</span>
+                                        </li>
+                                        <li>
+                                            <div class="award-title">Distinguished Alumni</div>
+                                            <div class="award-meta">College of the Mainland</div>
+                                            <span class="award-date">2012</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul class="awards-list">
+                                        <li>
+                                            <div class="award-title">Healthcare Heroes</div>
+                                            <div class="award-meta">Business Journal of the TriCities</div>
+                                            <span class="award-date">2011</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -599,70 +1703,143 @@
         </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
     <script>
-        /*******************************************
-         * Navigation Functionality
-         * Handles smooth scrolling and active state
-         * of navigation links
-         *******************************************/
-        
-        // Get all navigation links
-        const navLinks = document.querySelectorAll('.nav-menu a');
-        
-        // Add click handlers for smooth scrolling
-        navLinks.forEach(link => {
-            link.addEventListener('click', e => {
-                // Prevent default anchor behavior
-                e.preventDefault();
-                
-                // Get the target section
-                const targetId = link.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                
-                if (targetSection) {
-                    // Smooth scroll to target
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth'
-                    });
+        document.addEventListener('DOMContentLoaded', function() {
+            // Prevent any automatic scrolling on page load
+            if (history.scrollRestoration) {
+                history.scrollRestoration = 'manual';
+            }
+            window.scrollTo(0, 0);
+
+            const sections = document.querySelectorAll('.section');
+            
+            // Collapse all sections except summary
+            sections.forEach(section => {
+                if (section.id !== 'summary') {
+                    section.classList.add('collapsed');
                 }
             });
-        });
 
-        /*******************************************
-         * Scroll Spy Implementation
-         * Updates active navigation link based on
-         * current scroll position
-         *******************************************/
-        
-        // Debounce scroll event for better performance
-        let scrollTimeout;
-        window.addEventListener('scroll', () => {
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(updateActiveNavLink, 100);
-        });
-
-        /**
-         * Updates the active state of navigation links based on scroll position
-         * Adds 'active' class to the link whose section is currently in view
-         */
-        function updateActiveNavLink() {
-            const fromTop = window.scrollY + 100; // Offset for better accuracy
-
-            navLinks.forEach(link => {
-                const section = document.querySelector(link.hash);
+            // Add click handlers to section headers
+            sections.forEach(section => {
                 const header = section.querySelector('.section-header');
-                const headerRect = header.getBoundingClientRect();
-
-                // Check if section is in viewport
-                if (headerRect.top <= 100 && headerRect.bottom >= 100) {
-                    navLinks.forEach(link => link.classList.remove('active'));
-                    link.classList.add('active');
-                }
+                header.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const isCollapsed = section.classList.contains('collapsed');
+                    
+                    if (isCollapsed) {
+                        // Expand this section
+                        section.classList.remove('collapsed');
+                        
+                        // If it's the work section, handle work categories
+                        if (section.id === 'work') {
+                            const firstCategory = section.querySelector('.work-category');
+                            if (firstCategory) {
+                                const timeline = firstCategory.querySelector('.timeline');
+                                if (timeline) {
+                                    timeline.style.display = 'block';
+                                }
+                            }
+                        }
+                        
+                        // Smooth scroll to this section
+                        section.scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                        // Collapse this section
+                        section.classList.add('collapsed');
+                        
+                        // If it's the work section, collapse all timelines
+                        if (section.id === 'work') {
+                            const timelines = section.querySelectorAll('.timeline');
+                            timelines.forEach(timeline => {
+                                timeline.style.display = 'none';
+                            });
+                        }
+                    }
+                });
             });
-        }
 
-        // Initialize active state
-        updateActiveNavLink();
+            // Handle hash navigation
+            function handleHashNavigation() {
+                const hash = window.location.hash;
+                if (hash) {
+                    const targetSection = document.querySelector(hash);
+                    if (targetSection) {
+                        // Collapse all sections except summary
+                        sections.forEach(section => {
+                            if (section.id !== 'summary') {
+                                section.classList.add('collapsed');
+                            }
+                        });
+                        
+                        // Expand target section
+                        targetSection.classList.remove('collapsed');
+                        
+                        // Handle work section specially
+                        if (targetSection.id === 'work') {
+                            const firstCategory = targetSection.querySelector('.work-category');
+                            if (firstCategory) {
+                                const timeline = firstCategory.querySelector('.timeline');
+                                if (timeline) {
+                                    timeline.style.display = 'block';
+                                }
+                            }
+                        }
+                        
+                        // Smooth scroll to target
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            }
+
+            // Handle hash changes
+            window.addEventListener('hashchange', handleHashNavigation);
+
+            // Work section specific functionality
+            const workSection = document.getElementById('work');
+            if (workSection) {
+                // Initially hide all timelines
+                const timelines = workSection.querySelectorAll('.timeline');
+                timelines.forEach(timeline => {
+                    timeline.style.display = 'none';
+                });
+
+                // Add click handlers to category headers
+                const categoryHeaders = workSection.querySelectorAll('.work-category-header');
+                categoryHeaders.forEach(header => {
+                    header.addEventListener('click', function(e) {
+                        e.stopPropagation(); // Prevent event from bubbling to section header
+                        const category = this.parentElement;
+                        const timeline = category.querySelector('.timeline');
+                        
+                        if (timeline.style.display === 'none') {
+                            timeline.style.display = 'block';
+                        } else {
+                            timeline.style.display = 'none';
+                        }
+                    });
+                });
+            }
+
+            // View toggle functionality for work section
+            const viewToggles = document.querySelectorAll('.view-toggle input');
+            const categorizedView = document.querySelector('.view-categorized');
+            const chronologicalView = document.querySelector('.view-chronological');
+
+            viewToggles.forEach(toggle => {
+                toggle.addEventListener('change', function() {
+                    if (this.value === 'categorized') {
+                        categorizedView.classList.add('active');
+                        chronologicalView.classList.remove('active');
+                    } else {
+                        chronologicalView.classList.add('active');
+                        categorizedView.classList.remove('active');
+                    }
+                });
+            });
+        });
     </script>
     <script src="js/resume.js"></script>
 </body>
