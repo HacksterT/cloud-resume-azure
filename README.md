@@ -187,6 +187,10 @@ This staged approach ensures clean code management and prevents duplicate work d
 ### Next Steps
 - [ ] Upload website files to $web container
 - [ ] Configure custom domain
+  - Connect GoDaddy domain to Azure storage endpoint
+  - Set up CNAME record in GoDaddy DNS
+  - Configure SSL/TLS for secure HTTPS
+  - Options for root domain or subdomain (e.g., resume.domain.com)
 - [ ] Set up Azure Functions for visitor counter
 - [ ] Implement CDN for better performance
 
