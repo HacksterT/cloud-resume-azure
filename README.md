@@ -89,6 +89,48 @@ cloud-resume-azure/
 
 ## Setup Instructions
 
+### Data Management Strategy
+Currently, the resume data is hardcoded in `resume.js` due to local development constraints with JSON fetching. This is a temporary solution. The long-term plan involves:
+
+1. **Current Implementation**
+   - Resume data stored directly in `resume.js`
+   - JSON files in `data/` directory (currently unused)
+   - Updates require direct code changes
+
+2. **Python Management Scripts Status**
+   - Several Python scripts exist in `frontend/admin/`:
+     * `manage_resume.py`: Main management interface
+     * `update_roles.py`: Role management system
+     * `update_projects.py`: Project management system
+   - These scripts are currently inactive as they're designed to work with JSON files
+   - Will be reactivated and updated once Azure infrastructure is in place
+
+3. **Content Management Strategy**
+   - Phase 1 (Current): 
+     * Maintain minimal, essential content in `resume.js`
+     * Hold off on adding extensive new content
+     * Focus on Azure infrastructure setup
+   
+   - Phase 2 (Azure Implementation):
+     * Move data to Azure Blob Storage
+     * Update Python scripts for Azure integration
+     * Implement admin interface
+     * Begin adding comprehensive content through admin panel
+
+4. **Planned Azure Implementation**
+   - Move data to Azure Blob Storage
+   - Implement Azure Functions API for data retrieval
+   - Use Azure CDN for caching and performance
+   - Enable admin panel for easy updates
+
+5. **Migration Path**
+   - Phase 1: Current hardcoded implementation
+   - Phase 2: Azure Functions API + Blob Storage
+   - Phase 3: Admin interface for content management
+   - Phase 4: CI/CD pipeline for automated deployments
+
+This staged approach ensures clean code management and prevents duplicate work during the transition to a full Azure implementation.
+
 ### Local Development Setup
 1. Clone the repository:
    ```bash
@@ -116,6 +158,37 @@ cloud-resume-azure/
 - **index.html**: Generated website with actual content
 - **roles.json**: Stores role information in categories (Administrative, Clinical, Academic)
 - **manage_resume.py**: Main interface for content management
+
+## Azure Infrastructure Setup
+
+### Storage Account Configuration
+- **Resource Group**: rg-cloud-resume
+- **Storage Account**: sybertresume
+- **Region**: East US 2 (chosen for better availability)
+- **Performance Tier**: Standard
+- **Redundancy**: Locally Redundant Storage (LRS)
+
+### Security & Data Protection
+- Public blob access enabled
+- Soft delete enabled (7 days retention)
+- Version control enabled
+- TLS 1.2 enforced
+- Microsoft-managed encryption keys
+
+### Static Website Hosting
+- Enabled with primary endpoint: https://sybertresume.z20.web.core.windows.net/
+- Configured for index.html
+
+### Infrastructure as Code
+- ARM templates stored in `/infrastructure/storage/`
+  - template.json: Main ARM template
+  - parameters.json: Configuration parameters
+
+### Next Steps
+- [ ] Upload website files to $web container
+- [ ] Configure custom domain
+- [ ] Set up Azure Functions for visitor counter
+- [ ] Implement CDN for better performance
 
 ## Architecture Overview
 

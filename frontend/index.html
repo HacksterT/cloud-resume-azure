@@ -3,9 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Troy E. Sybert - Professional Portfolio</title>
+    <meta name="description" content="Explore Troy E. Sybert's professional portfolio, showcasing expertise in healthcare leadership, data science, and technological innovation. View work experience, credentials, and publications.">
+    <meta name="keywords" content="Troy E. Sybert, Healthcare Leadership, Data Science, Medical Director, Professional Portfolio">
+    <meta name="author" content="Troy E. Sybert">
+    <meta property="og:title" content="Troy E. Sybert - Professional Portfolio">
+    <meta property="og:description" content="Healthcare leader and data scientist with expertise in clinical excellence and technological innovation.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://troysybert.azurewebsites.net/index.html">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://troysybert.azurewebsites.net/index.html">
+    <title>Troy E. Sybert - Healthcare Leadership & Data Science Portfolio</title>
     <style>
-        /* Base styles */
+        /*******************************************
+         * Base Styles
+         * Global styles and typography settings
+         *******************************************/
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
@@ -14,7 +26,11 @@
             color: #333;
         }
         
-        /* Header styles */
+        /*******************************************
+         * Header Section
+         * Styles for the profile header area including
+         * photo and basic information
+         *******************************************/
         .header {
             background: linear-gradient(to right, #2c3e50, #3498db);
             color: white;
@@ -23,12 +39,16 @@
             flex-direction: column;
             gap: 1rem;
         }
+        
+        /* Profile section layout */
         .profile-section {
             display: flex;
             align-items: center;
             gap: 2rem;
             margin-bottom: 1rem;
         }
+        
+        /* Circular profile photo container */
         .profile-photo {
             width: 200px;
             height: 200px;
@@ -37,11 +57,16 @@
             background: #ccc;
             overflow: hidden;
         }
+        
         .profile-info {
             flex-grow: 1;
         }
 
-        /* Career box styles */
+        /*******************************************
+         * Career Box Section
+         * Styles for the career summary boxes and
+         * experience grid layout
+         *******************************************/
         .career-box {
             border: 2px solid #3498db;
             border-radius: 8px;
@@ -49,12 +74,16 @@
             margin: 1.5rem 0;
             background: #f8f9fa;
         }
+        
+        /* Career box headings */
         .career-box h3 {
             color: #2c3e50;
             margin-bottom: 1.5rem;
             text-align: center;
             font-size: 1.2em;
         }
+        
+        /* Experience grid layout */
         .experience-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -65,15 +94,11 @@
             color: #2c3e50;
             padding: 0 1rem;
         }
-        .experience-item {
-            line-height: 1.4;
-        }
-        .experience-item strong {
-            font-weight: 600;
-            color: inherit;
-        }
 
-        /* Skills grid styles */
+        /*******************************************
+         * Skills Section
+         * Grid layout for skills with bullet points
+         *******************************************/
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -81,6 +106,8 @@
             margin-top: 1.5rem;
             padding: 0 1rem;
         }
+        
+        /* Individual skill items with bullet points */
         .skill-item {
             background: transparent;
             padding: 0.4rem 0;
@@ -90,53 +117,17 @@
             position: relative;
             padding-left: 1.2em;
         }
-        .skill-item::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #3498db;
-            font-size: 1.2em;
-            line-height: 1;
-        }
 
-        /* Work section styles */
-        .work-categories {
-            margin-top: 1rem;
-        }
-        .view-toggle {
-            text-align: center;
-            margin-bottom: 2rem;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 5px;
-        }
-        .view-toggle label {
-            margin: 0 1rem;
-            cursor: pointer;
-            color: #2c3e50;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-        .view-toggle label:hover {
-            background-color: #e9ecef;
-        }
-        .view-toggle input[type="radio"] {
-            margin-right: 0.5rem;
-        }
-        .work-category {
-            margin-bottom: 2rem;
-        }
-        .work-category h3 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
+        /*******************************************
+         * Timeline Section
+         * Vertical timeline with dots and lines
+         *******************************************/
         .timeline {
             position: relative;
             padding-left: 2rem;
         }
+        
+        /* Vertical line for timeline */
         .timeline::before {
             content: '';
             position: absolute;
@@ -146,333 +137,43 @@
             width: 2px;
             background: #e9ecef;
         }
+        
+        /* Timeline item dots and content */
         .timeline-item {
             position: relative;
             margin-bottom: 3rem;
             padding: 0 0 0.5rem 0;
         }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -2rem;
-            top: 0.5rem;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #3498db;
-            border: 2px solid #fff;
-        }
-        .timeline-item .role-title {
-            font-size: 1.2em;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 0.3rem;
-        }
-        .timeline-item .company-name {
-            font-size: 1.1em;
-            color: #3498db;
-            margin-bottom: 0.2rem;
-        }
-        .timeline-item .role-meta {
-            display: flex;
-            gap: 1.5rem;
-            color: #666;
-            font-size: 0.9em;
-            margin-bottom: 1rem;
-        }
-        .timeline-item .company-description {
-            font-style: italic;
-            color: #666;
-            margin-bottom: 1rem;
-            padding: 0.8rem;
-            background: #f8f9fa;
-            border-radius: 4px;
-        }
-        .timeline-item .job-description {
-            color: #2c3e50;
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-        .timeline-item .accomplishments {
-            margin: 0;
-            padding-left: 1.2rem;
-        }
-        .timeline-item .accomplishments li {
-            margin-bottom: 0.5rem;
-            line-height: 1.4;
-            color: #2c3e50;
-        }
-        .timeline-item .accomplishments li::marker {
-            color: #3498db;
+
+        /*******************************************
+         * Responsive Design
+         * Media queries for different screen sizes
+         *******************************************/
+        @media (max-width: 768px) {
+            /* Mobile grid layouts */
+            .experience-grid, 
+            .skills-grid,
+            .credentials-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
         }
 
-        /* Section styles */
-        .section {
-            margin-bottom: 2rem;
-            overflow: hidden;
-        }
-        .section-header {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 4px;
-            margin: 0;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            font-size: 1.5em;
-            font-weight: bold;
-            justify-content: flex-start;
-        }
-        .section-header::after {
-            content: '▼';
-            font-size: 0.6em;
-            margin-left: 0.5rem;
-            transition: transform 0.3s ease;
-            position: relative;
-            top: 0.1em;
-        }
-        .section.collapsed .section-header::after {
-            transform: rotate(-90deg);
-        }
-        .section-content {
-            max-height: 10000px;
-            transition: max-height 0.5s ease-in-out;
-            overflow: hidden;
-            padding: 1rem;
-        }
-        .section.collapsed .section-content {
-            max-height: 0;
-            padding: 0 1rem;
-        }
-
-        /* Credentials section styles */
-        .credentials-section {
-            padding: 1rem;
-            background: #fff;
-        }
-        .credentials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        .credential-card {
-            background: #f8f9fa;
-            border: 1px solid #dee2e6;
-            border-radius: 6px;
-            padding: 0.75rem;
-            transition: transform 0.2s;
-        }
-        .credential-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-        }
-        .credential-title {
-            color: #2c3e50;
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-            line-height: 1.3;
-        }
-        .credential-subtitle {
-            color: #6c757d;
-            font-size: 0.85rem;
-            margin-bottom: 0.5rem;
-        }
-        .credential-meta {
-            font-size: 0.8rem;
-            color: #495057;
-        }
-        .credential-status {
-            display: inline-block;
-            padding: 0.15rem 0.5rem;
-            border-radius: 1rem;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-        .previous-licenses {
-            margin-top: 0.4rem;
-            padding-top: 0.4rem;
-            border-top: 1px solid #dee2e6;
-        }
-        .previous-licenses div {
-            margin: 0.2rem 0;
-            color: #6c757d;
-            font-size: 0.85rem;
-        }
-        .credentials-section h3 {
-            font-size: 1.2rem;
-            margin: 1rem 0 0.5rem 0;
-            color: #2c3e50;
-        }
-
-        /* Status styles */
-        .status-active {
-            background: #d4edda;
-            color: #155724;
-        }
-        .status-inactive {
-            background: #f8d7da;
-            color: #721c24;
-        }
-        .status-eligible {
-            background: #fff3cd;
-            color: #856404;
-        }
-
-        /* Navigation styles */
-        .nav-menu {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.5rem 0;
-            margin: 0 -2rem;
-        }
-        .nav-menu ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-        }
-        .nav-menu a {
-            color: white;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            transition: all 0.3s ease;
-        }
-        .nav-menu a:hover, .nav-menu a.active {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 4px;
-        }
-
-        /* Publications section styles */
-        .publication-list,
-        .presentation-list,
-        .press-list {
-            list-style: none;
-            padding: 0;
-            margin: 1rem 0 2rem 0;
-        }
-
-        .publication-list li,
-        .presentation-list li,
-        .press-list li {
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 4px;
-            border-left: 4px solid #3498db;
-            line-height: 1.6;
-        }
-
-        .publication-list li a,
-        .presentation-list li a,
-        .press-list li a {
-            color: #3498db;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        .publication-list li a:hover,
-        .presentation-list li a:hover,
-        .press-list li a:hover {
-            color: #2980b9;
-            text-decoration: underline;
-        }
-
-        .publication-date,
-        .press-date {
-            color: #666;
-            font-size: 0.9em;
-            margin-top: 0.5rem;
-            display: block;
-        }
-
-        .publication-list li:hover,
-        .presentation-list li:hover,
-        .press-list li:hover {
-            background: #f1f3f5;
-            transform: translateX(5px);
-            transition: all 0.2s ease;
-        }
-
-        #publications h3 {
-            color: #2c3e50;
-            margin: 2rem 0 1rem 0;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #3498db;
-        }
-
-        /* Add social media section styles */
-        .social-media-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        .social-media-item {
-            display: flex;
-            align-items: center;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 8px;
-            border-left: 4px solid #3498db;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .social-media-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .social-media-item a {
-            color: #2c3e50;
-            text-decoration: none;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            width: 100%;
-        }
-        .social-media-item a:hover {
-            color: #3498db;
-        }
-        .social-media-icon {
-            width: 24px;
-            height: 24px;
-            margin-right: 1rem;
-            fill: currentColor;
-        }
-
-        /* Add presentation resource styles */
-        .presentation-resources {
-            display: flex;
-            gap: 1rem;
-            margin-top: 0.5rem;
-        }
-        .resource-link {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.25rem 0.75rem;
-            background: #f8f9fa;
-            border-radius: 4px;
-            border: 1px solid #e9ecef;
-            color: #2c3e50;
-            text-decoration: none;
-            font-size: 0.9em;
-            transition: all 0.2s ease;
-        }
-        .resource-link:hover {
-            background: #e9ecef;
-            border-color: #dee2e6;
-            color: #3498db;
-        }
-        .resource-link svg {
-            width: 16px;
-            height: 16px;
-            margin-right: 0.5rem;
-            fill: currentColor;
+        /*******************************************
+         * Browser Compatibility
+         * Fallbacks for older browsers
+         *******************************************/
+        @supports not (display: grid) {
+            .experience-grid, .skills-grid, .credentials-grid {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            /* Fallback column sizes */
+            .experience-grid > * {
+                flex: 0 1 calc(33.333% - 1rem);
+                margin-bottom: 1rem;
+            }
         }
     </style>
 </head>
@@ -614,21 +315,21 @@
                         <div class="credential-card">
                             <div class="credential-title">Doctor of Medicine (MD)</div>
                             <div class="credential-subtitle">
-                                <a href="https://www.utsouthwestern.edu/" target="_blank">UT Southwestern Medical School</a>
+                                <a href="https://www.utsouthwestern.edu/" target="_blank" rel="noopener noreferrer">UT Southwestern Medical School</a>
                             </div>
                             <div class="credential-meta">Dallas, TX | 1997 - 2001</div>
                         </div>
                         <div class="credential-card">
                             <div class="credential-title">Master of Public Health (MPH)</div>
                             <div class="credential-subtitle">
-                                <a href="https://www.utmb.edu/spph/students/program-info/master-of-public-health-mph" target="_blank">University of Texas Medical Branch</a>
+                                <a href="https://www.utmb.edu/spph/students/program-info/master-of-public-health-mph" target="_blank" rel="noopener noreferrer">University of Texas Medical Branch</a>
                             </div>
                             <div class="credential-meta">Galveston, TX | 2002 - 2005</div>
                         </div>
                         <div class="credential-card">
                             <div class="credential-title">Bachelor of Science in Biology</div>
                             <div class="credential-subtitle">
-                                <a href="https://www.uhcl.edu/academics/degrees/biological-science-bs" target="_blank">University of Houston - Clear Lake</a>
+                                <a href="https://www.uhcl.edu/academics/degrees/biological-science-bs" target="_blank" rel="noopener noreferrer">University of Houston - Clear Lake</a>
                             </div>
                             <div class="credential-meta">Houston, TX | 1994 - 1996</div>
                             <div class="credential-meta">Graduated Cum Laude</div>
@@ -640,14 +341,14 @@
                         <div class="credential-card">
                             <div class="credential-title">Internal Medicine/Preventive Medicine Residency</div>
                             <div class="credential-subtitle">
-                                <a href="https://www.utmb.edu/internalmedicine/im-residency-program/welcome-to-internal-medicine-residency/welcome-and-program-overview" target="_blank">University of Texas Medical Branch</a>
+                                <a href="https://www.utmb.edu/internalmedicine/im-residency-program/welcome-to-internal-medicine-residency/welcome-and-program-overview" target="_blank" rel="noopener noreferrer">University of Texas Medical Branch</a>
                             </div>
                             <div class="credential-meta">Galveston, TX | 2001 - 2005</div>
                         </div>
                         <div class="credential-card">
                             <div class="credential-title">Internal Medicine Fellowship</div>
                             <div class="credential-subtitle">
-                                <a href="https://college.mayo.edu/academics/residencies-and-fellowships/general-internal-medicine-fellowship-minnesota/" target="_blank">Mayo Clinic</a>
+                                <a href="https://college.mayo.edu/academics/residencies-and-fellowships/general-internal-medicine-fellowship-minnesota/" target="_blank" rel="noopener noreferrer">Mayo Clinic</a>
                             </div>
                             <div class="credential-meta">Rochester, MN | 2005</div>
                         </div>
@@ -658,7 +359,7 @@
                         <div class="credential-card">
                             <div class="credential-title">Medical License #46875</div>
                             <div class="credential-subtitle">
-                                <a href="https://apps.health.tn.gov/Licensure/default.aspx" target="_blank">Tennessee Medical Board</a>
+                                <a href="https://apps.health.tn.gov/Licensure/default.aspx" target="_blank" rel="noopener noreferrer">Tennessee Medical Board</a>
                             </div>
                             <div class="credential-meta">
                                 <span class="credential-status status-active">Active</span>
@@ -668,7 +369,7 @@
                         <div class="credential-card">
                             <div class="credential-title">Medical License #L7208</div>
                             <div class="credential-subtitle">
-                                <a href="https://www.tmb.state.tx.us/page/look-up-a-license" target="_blank">Texas Medical Board</a>
+                                <a href="https://www.tmb.state.tx.us/page/look-up-a-license" target="_blank" rel="noopener noreferrer">Texas Medical Board</a>
                             </div>
                             <div class="credential-meta">
                                 <span class="credential-status status-active">Active</span>
@@ -700,7 +401,7 @@
                         <div class="credential-card">
                             <div class="credential-title">Preventive Medicine and Public Health</div>
                             <div class="credential-subtitle">
-                                <a href="https://www.theabpm.org/become-certified/specialties/public-health-general-preventive-medicine/" target="_blank">American Board of Preventive Medicine</a>
+                                <a href="https://www.theabpm.org/become-certified/specialties/public-health-general-preventive-medicine/" target="_blank" rel="noopener noreferrer">American Board of Preventive Medicine</a>
                             </div>
                             <div class="credential-meta">
                                 <span class="credential-status status-active">Active</span>
@@ -710,7 +411,7 @@
                         <div class="credential-card">
                             <div class="credential-title">Clinical Informatics</div>
                             <div class="credential-subtitle">
-                                <a href="https://www.theabpm.org/become-certified/subspecialties/clinical-informatics/" target="_blank">American Board of Preventive Medicine</a>
+                                <a href="https://www.theabpm.org/become-certified/subspecialties/clinical-informatics/" target="_blank" rel="noopener noreferrer">American Board of Preventive Medicine</a>
                             </div>
                             <div class="credential-meta">
                                 <span class="credential-status status-active">Active</span>
@@ -724,7 +425,7 @@
                         <div class="credential-card">
                             <div class="credential-title">Certified Usability Analyst</div>
                             <div class="credential-subtitle">
-                                <a href="https://www.credly.com/badges/c5939bf0-15c4-496b-8722-58740b8bfabe/linked_in_profile" target="_blank">Human Factors International</a>
+                                <a href="https://www.credly.com/badges/c5939bf0-15c4-496b-8722-58740b8bfabe/linked_in_profile" target="_blank" rel="noopener noreferrer">Human Factors International</a>
                             </div>
                             <div class="credential-meta">
                                 <span class="credential-status status-active">Active</span>
@@ -734,7 +435,7 @@
                         <div class="credential-card">
                             <div class="credential-title">Level 1 Military Environmental Exposure Certification</div>
                             <div class="credential-subtitle">
-                                <a href="https://www.acpm.org/Education-Events/Military-Environmental-Exposures-Certification" target="_blank">American College of Preventive Medicine</a>
+                                <a href="https://www.acpm.org/Education-Events/Military-Environmental-Exposures-Certification" target="_blank" rel="noopener noreferrer">American College of Preventive Medicine</a>
                             </div>
                             <div class="credential-meta">
                                 <span class="credential-status status-active">Active</span>
@@ -764,31 +465,31 @@
                             <ul class="publication-list">
                                 <li>
                                     Schlosser R, Reddy S, Willis D, Sybert TE. Real World Healthcare Innovation: Clinical Evidence & Cost Effectiveness. 
-                                    <a href="https://healthtrustpg.com/wp-content/uploads/2017/09/Real-World-Healthcare-Innovation.pdf" target="_blank">
+                                    <a href="https://healthtrustpg.com/wp-content/uploads/2017/09/Real-World-Healthcare-Innovation.pdf" target="_blank" rel="noopener noreferrer">
                                     HealthTrust</a>. 2017.
                                     <span class="publication-date">Published September 2017</span>
                                 </li>
                                 <li>
                                     Keller B, Enzler D, Sybert TE. In the Literature: Staph Endocarditis, METS, COPD, CPGs & More. 
-                                    <a href="https://www.the-hospitalist.org/hospitalist/article/122997/staph-endocarditis-mets-copd-cpgs-more" target="_blank">
+                                    <a href="https://www.the-hospitalist.org/hospitalist/article/122997/staph-endocarditis-mets-copd-cpgs-more" target="_blank" rel="noopener noreferrer">
                                     The Hospitalist</a>. 2015;2015(8).
                                     <span class="publication-date">Published August 2015</span>
                                 </li>
                                 <li>
                                     Sybert TE. Big Data. Big Changes. What's the Big Idea? 
-                                    <a href="https://pubmed.ncbi.nlm.nih.gov/25558523/" target="_blank">
+                                    <a href="https://pubmed.ncbi.nlm.nih.gov/25558523/" target="_blank" rel="noopener noreferrer">
                                     Tennessee Medicine</a>. 2014;107(6):21-23. PMID: 25558523.
                                     <span class="publication-date">Published Winter 2014</span>
                                 </li>
                                 <li>
                                     Liu J, Sybert TE, Qian Y, Liu F. Effects of thalidomide on rat embryonic DNA synthesis in vitro. 
-                                    <a href="https://www.sciencedirect.com/science/article/abs/pii/S0891584998000550?via%3Dihub" target="_blank">
+                                    <a href="https://www.sciencedirect.com/science/article/abs/pii/S0891584998000550?via%3Dihub" target="_blank" rel="noopener noreferrer">
                                     Free Radical Biology and Medicine</a>. 1998;25(6):689-92.
                                     <span class="publication-date">Published October 1998</span>
                                 </li>
                                 <li>
                                     Chavoshan B, Sander M, Sybert TE, Hansen J, Victor RG, Thomas GD. Heat acclimation and prior heat exposure do not modify pressor responses to muscle metaboreflex activation. 
-                                    <a href="https://physoc.onlinelibrary.wiley.com/doi/epdf/10.1113/jphysiol.2001.013153" target="_blank">
+                                    <a href="https://physoc.onlinelibrary.wiley.com/doi/epdf/10.1113/jphysiol.2001.013153" target="_blank" rel="noopener noreferrer">
                                     The Journal of Physiology</a>. 2002;536(2):449-459.
                                     <span class="publication-date">Published October 2002</span>
                                 </li>
@@ -798,20 +499,20 @@
                             <ul class="presentation-list">
                                 <li>
                                     "Provider Engagement Framework: Building Intrinsic Motivation Through Autonomy, Purpose, and Mastery."
-                                    <a href="https://youtu.be/O3jceG53nCw?si=MIBTWPPOBrqLVu5m" target="_blank">
+                                    <a href="https://youtu.be/O3jceG53nCw?si=MIBTWPPOBrqLVu5m" target="_blank" rel="noopener noreferrer">
                                     mhca Summer Conference, Raleigh, NC</a>.
                                     <span class="presentation-date">August 2022</span>
                                     <div class="presentation-description">
                                         A presentation on a Provider Engagement Framework built around autonomy, purpose, and mastery leading to intrinsic motivation, including a data-driven change model and its application at Monarch.
                                     </div>
                                     <div class="presentation-resources">
-                                        <a href="assets/presentations/provider-engagement-framework.pdf" target="_blank" class="resource-link">
+                                        <a href="assets/presentations/provider-engagement-framework.pdf" target="_blank" rel="noopener noreferrer" class="resource-link">
                                             <svg viewBox="0 0 24 24">
                                                 <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M13,13V19H15V13H19L16,10L13,13M11,11V17H9V11H5L8,8L11,11Z"/>
                                             </svg>
                                             Slide Deck (PDF)
                                         </a>
-                                        <a href="https://youtu.be/O3jceG53nCw?si=MIBTWPPOBrqLVu5m" target="_blank" class="resource-link">
+                                        <a href="https://youtu.be/O3jceG53nCw?si=MIBTWPPOBrqLVu5m" target="_blank" rel="noopener noreferrer" class="resource-link">
                                             <svg viewBox="0 0 24 24">
                                                 <path d="M10,16.5V7.5L16,12M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
                                             </svg>
@@ -825,19 +526,19 @@
                             <ul class="press-list">
                                 <li>
                                     "Troy Sybert focused on bringing Walmart model to healthcare." 
-                                    <a href="https://www.teknovation.biz/troy-sybert-focused-bringing-walmart-model-healthcare/" target="_blank">
+                                    <a href="https://www.teknovation.biz/troy-sybert-focused-bringing-walmart-model-healthcare/" target="_blank" rel="noopener noreferrer">
                                     Teknovation.biz</a>.
                                     <span class="press-date">Published March 2024</span>
                                 </li>
                                 <li>
                                     "Why we switched to Epic." 
-                                    <a href="https://www.beckershospitalreview.com/healthcare-information-technology/why-we-switched-to-epic.html" target="_blank">
+                                    <a href="https://www.beckershospitalreview.com/healthcare-information-technology/why-we-switched-to-epic.html" target="_blank" rel="noopener noreferrer">
                                     Becker's Hospital Review</a>.
                                     <span class="press-date">Published January 2014</span>
                                 </li>
                                 <li>
                                     "Automated for the Greater Good." 
-                                    <a href="https://healthtrustpg.com/thesource/technology-innovation/technological-advancements/automated-for-the-greater-good/" target="_blank">
+                                    <a href="https://healthtrustpg.com/thesource/technology-innovation/technological-advancements/automated-for-the-greater-good/" target="_blank" rel="noopener noreferrer">
                                     HealthTrust The Source</a>.
                                     <span class="press-date">Published January 2018</span>
                                 </li>
@@ -862,7 +563,7 @@
             <div class="section-content">
                 <div class="social-media-grid">
                     <div class="social-media-item">
-                        <a href="https://www.doximity.com/cv/troy" target="_blank">
+                        <a href="https://www.doximity.com/cv/troy" target="_blank" rel="noopener noreferrer">
                             <svg class="social-media-icon" viewBox="0 0 24 24">
                                 <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22c-5.523 0-10-4.477-10-10S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm1-15H9v10h2V9h2V7zm0-2a1 1 0 100-2 1 1 0 000 2z"/>
                             </svg>
@@ -870,7 +571,7 @@
                         </a>
                     </div>
                     <div class="social-media-item">
-                        <a href="https://www.linkedin.com/in/troysybert/" target="_blank">
+                        <a href="https://www.linkedin.com/in/troy-sybert/" target="_blank" rel="noopener noreferrer">
                             <svg class="social-media-icon" viewBox="0 0 24 24">
                                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                             </svg>
@@ -878,7 +579,7 @@
                         </a>
                     </div>
                     <div class="social-media-item">
-                        <a href="https://x.com/TroySybert" target="_blank">
+                        <a href="https://x.com/TroySybert" target="_blank" rel="noopener noreferrer">
                             <svg class="social-media-icon" viewBox="0 0 24 24">
                                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                             </svg>
@@ -886,7 +587,7 @@
                         </a>
                     </div>
                     <div class="social-media-item">
-                        <a href="https://www.youtube.com/@Journey2HealthDoc" target="_blank">
+                        <a href="https://www.youtube.com/@Journey2HealthDoc" target="_blank" rel="noopener noreferrer">
                             <svg class="social-media-icon" viewBox="0 0 24 24">
                                 <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                             </svg>
@@ -899,43 +600,60 @@
     </div>
 
     <script>
-        // Navigation active state
+        /*******************************************
+         * Navigation Functionality
+         * Handles smooth scrolling and active state
+         * of navigation links
+         *******************************************/
+        
+        // Get all navigation links
         const navLinks = document.querySelectorAll('.nav-menu a');
-        const sections = document.querySelectorAll('.section');
-
-        // Collapsible sections
-        sections.forEach(section => {
-            const header = section.querySelector('.section-header');
-            const content = section.querySelector('.section-content');
-            
-            header.addEventListener('click', () => {
-                // Get current scroll position
-                const scrollPos = window.scrollY;
-                const headerTop = header.getBoundingClientRect().top + scrollPos;
+        
+        // Add click handlers for smooth scrolling
+        navLinks.forEach(link => {
+            link.addEventListener('click', e => {
+                // Prevent default anchor behavior
+                e.preventDefault();
                 
-                // Toggle collapsed state
-                section.classList.toggle('collapsed');
+                // Get the target section
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
                 
-                // If section is being collapsed and it's above current scroll position,
-                // scroll to the header
-                if (section.classList.contains('collapsed') && headerTop < scrollPos) {
-                    window.scrollTo({
-                        top: headerTop,
+                if (targetSection) {
+                    // Smooth scroll to target
+                    targetSection.scrollIntoView({
                         behavior: 'smooth'
                     });
                 }
             });
         });
 
-        // Update active nav link on scroll
+        /*******************************************
+         * Scroll Spy Implementation
+         * Updates active navigation link based on
+         * current scroll position
+         *******************************************/
+        
+        // Debounce scroll event for better performance
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(updateActiveNavLink, 100);
+        });
+
+        /**
+         * Updates the active state of navigation links based on scroll position
+         * Adds 'active' class to the link whose section is currently in view
+         */
         function updateActiveNavLink() {
-            const fromTop = window.scrollY + 100;
+            const fromTop = window.scrollY + 100; // Offset for better accuracy
 
             navLinks.forEach(link => {
                 const section = document.querySelector(link.hash);
                 const header = section.querySelector('.section-header');
                 const headerRect = header.getBoundingClientRect();
 
+                // Check if section is in viewport
                 if (headerRect.top <= 100 && headerRect.bottom >= 100) {
                     navLinks.forEach(link => link.classList.remove('active'));
                     link.classList.add('active');
@@ -943,8 +661,9 @@
             });
         }
 
-        window.addEventListener('scroll', updateActiveNavLink);
+        // Initialize active state
         updateActiveNavLink();
     </script>
+    <script src="js/resume.js"></script>
 </body>
 </html>
