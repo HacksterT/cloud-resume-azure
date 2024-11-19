@@ -94,6 +94,38 @@ To update the resume:
 3. Commit changes to Git
 4. Push to main branch - automatic deployment handles the rest
 
+## Next Steps
+### Backend Implementation
+1. **Azure Functions Setup**
+   - Create HTTP-triggered Azure Function
+   - Configure CORS settings
+   - Set up local development environment
+   - Deploy to Azure
+
+2. **Database Integration**
+   - Create CosmosDB account
+   - Set up database and container
+   - Configure Function bindings for CosmosDB
+   - Implement counter logic
+
+3. **Visitor Counter Feature**
+   - Add counter display to frontend
+   - Implement JavaScript API call
+   - Connect frontend with Azure Function
+   - Test counter functionality
+
+4. **Testing Framework**
+   - Set up xUnit testing
+   - Create test cases for Azure Function
+   - Implement integration tests
+   - Add tests to CI/CD pipeline
+
+### Resources
+- [HTTP triggered Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger)
+- [CosmosDB Bindings](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-cosmosdb-v2)
+- [xUnit Testing](https://xunit.net/docs/getting-started)
+- [JavaScript API Calls](https://www.digitalocean.com/community/tutorials/how-to-use-the-javascript-fetch-api-to-get-data)
+
 ## Status
 - ✅ Basic structure and styling complete
 - ✅ Responsive design implemented
