@@ -3,10 +3,15 @@
 ## Project Overview
 This project implements a cloud-hosted resume website using Azure Static Web Apps. The design focuses on simplicity, maintainability, and professional presentation.
 
+## Live Website
+- Production URL: [www.troymd.com](https://www.troymd.com)
+- Azure URL: [jolly-flower-02175240f.5.azurestaticapps.net](https://jolly-flower-02175240f.5.azurestaticapps.net)
+
 ## Architecture
 - **Frontend**: Static HTML/CSS/JavaScript
 - **Hosting**: Azure Static Web Apps
-- **Domain**: Custom domain integration planned
+- **Domain**: Custom domain (www.troymd.com) with GoDaddy DNS
+- **Deployment**: GitHub Actions CI/CD pipeline
 
 ## Current Implementation
 ### Completed Features
@@ -38,6 +43,12 @@ This project implements a cloud-hosted resume website using Azure Static Web App
    - Collapsible work categories with timeline view
    - Animated transitions for better user experience
 
+4. **Domain & Email Configuration**
+   - Custom domain setup with Azure Static Web Apps
+   - Maintained email forwarding to iCloud
+   - Proper DNS configuration with security records
+   - Email authentication (SPF, DKIM) preserved
+
 ### File Structure
 ```
 cloud-resume-azure/
@@ -46,47 +57,42 @@ cloud-resume-azure/
 │   ├── assets/
 │   │   └── presentations/      # Presentations and profile photo
 │   └── js/                     # JavaScript functionality
+├── .github/
+│   └── workflows/
+│       └── azure-static-web-apps.yml  # CI/CD configuration
 └── README.md
 ```
 
 ## Development Approach
-We've adopted a streamlined approach focusing on:
 1. Direct HTML/CSS implementation for faster development
 2. Single-file architecture for easier maintenance
 3. Built-in styling without external dependencies
 4. Static content for reliable performance
 5. Interactive features for better user engagement
+6. Automated deployment through GitHub Actions
 
-## Deployment
+## Deployment Process
 1. **Local Development**
    - Clone the repository
-   - Open `frontend/index.html` in a browser for local testing
+   - Make changes to content
+   - Test locally using browser
 
-2. **Azure Deployment**
-   - Deploy to Azure Static Web Apps
-   - Configure custom domain (if applicable)
-   - Verify all assets and presentations are properly loaded
+2. **Automated Deployment**
+   - Push changes to main branch
+   - GitHub Actions automatically builds and deploys
+   - Changes live within minutes
+
+3. **Domain Configuration**
+   - Azure Static Web Apps hosts the site
+   - Custom domain (www.troymd.com) points to Azure
+   - DNS managed through GoDaddy
 
 ## Maintenance
 To update the resume:
 1. Make changes to the relevant sections in `index.html`
-2. Test locally to ensure all features work as expected
+2. Test locally to ensure all features work
 3. Commit changes to Git
-4. Push to Azure Storage for deployment
-
-## Future Enhancements
-- Add visitor counter
-- Implement dark mode toggle
-- Add more interactive visualizations
-- Enhance mobile responsiveness
-- Add print-friendly version
-
-## Recent Updates
-- ✅ Optimized section navigation behavior
-- ✅ Improved initial page load experience
-- ✅ Enhanced work section category management
-- ✅ Added smooth scrolling navigation
-- ✅ Implemented hash-based navigation support
+4. Push to main branch - automatic deployment handles the rest
 
 ## Status
 - ✅ Basic structure and styling complete
@@ -94,3 +100,6 @@ To update the resume:
 - ✅ Section navigation optimized
 - ✅ Content organization finalized
 - ✅ Azure deployment complete
+- ✅ Custom domain configured
+- ✅ Email services preserved
+- ✅ CI/CD pipeline established
