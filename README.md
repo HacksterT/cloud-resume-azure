@@ -143,6 +143,19 @@ To update the resume:
 
 ## Known Issues and Future Work
 
+### Work Activity View Issues
+- **Chronological View Not Opening**
+  - Issue: While fixing the categorized view collapse/expand behavior, the chronological view stopped working
+  - Potential fixes to investigate:
+    1. Check if the view toggle event listeners are properly handling the chronological view class changes
+    2. Verify the interaction between section collapse state and view changes
+    3. Review if the 'active' class is being properly toggled for chronological view
+    4. Ensure the view-chronological div structure matches the categorized view
+  - Files to check:
+    - `frontend/index.html`: Review JavaScript event handlers for view toggles
+    - Look specifically at the radio button change handlers
+    - Check CSS classes for view-chronological elements
+
 ### Visual Design Improvements
 - Update chronological view color scheme:
   - Current colors may confuse users as they differ from categorized and summary views
