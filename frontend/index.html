@@ -186,10 +186,6 @@
             padding-left: 0;
         }
 
-        .timeline::before {
-            display: none; /* Removing the continuous vertical line */
-        }
-
         .timeline-item {
             background: white;
             border-radius: 8px;
@@ -589,23 +585,23 @@
 
         /* Chronological view styles */
         .work-category[data-years="2020-Present"] .work-category-header {
-            border-bottom: 2px solid #2ecc71;  /* Vibrant green for current */
-            background: linear-gradient(to right, rgba(46, 204, 113, 0.1), transparent);
+            border-bottom: 2px solid #2c3e50;  /* Dark gray for current */
+            background: linear-gradient(to right, rgba(44, 62, 80, 0.1), transparent);
         }
 
         .work-category[data-years="2015-2019"] .work-category-header {
-            border-bottom: 2px solid #3498db;  /* Blue for recent past */
-            background: linear-gradient(to right, rgba(52, 152, 219, 0.1), transparent);
+            border-bottom: 2px solid #34495e;  /* Medium-dark gray for recent past */
+            background: linear-gradient(to right, rgba(52, 73, 94, 0.1), transparent);
         }
 
         .work-category[data-years="2010-2014"] .work-category-header {
-            border-bottom: 2px solid #9b59b6;  /* Purple for mid past */
-            background: linear-gradient(to right, rgba(155, 89, 182, 0.1), transparent);
+            border-bottom: 2px solid #7f8c8d;  /* Medium gray for mid past */
+            background: linear-gradient(to right, rgba(127, 140, 141, 0.1), transparent);
         }
 
         .work-category[data-years="2003-2009"] .work-category-header {
-            border-bottom: 2px solid #e67e22;  /* Orange for earliest */
-            background: linear-gradient(to right, rgba(230, 126, 34, 0.1), transparent);
+            border-bottom: 2px solid #95a5a6;  /* Light gray for earliest */
+            background: linear-gradient(to right, rgba(149, 165, 166, 0.1), transparent);
         }
 
         /* Continued role styles */
@@ -1065,7 +1061,7 @@
                             </div>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-item" data-category="administrative" data-date="2023-05">
+                            <div class="timeline-item" data-category="administrative" data-date="2023-05" data-end-date="Present">
                                 <div class="role-title">Physician Informaticist</div>
                                 <div class="company-meta">
                                     <div class="company-name">Veteran's Affairs</div>
@@ -1085,7 +1081,7 @@
                                     <li>Contributed to multidisciplinary team in assessing orphan codes in the EMR</li>
                                 </ul>
                             </div>
-                            <div class="timeline-item" data-category="administrative" data-date="2018-11">
+                            <div class="timeline-item" data-category="administrative" data-date="2018-11" data-end-date="2019-03">
                                 <div class="role-title">Chief Medical Officer</div>
                                 <div class="company-meta">
                                     <div class="company-name">American Academic Health System</div>
@@ -1106,14 +1102,14 @@
                                     <li>Served as liaison between medical staff and hospital leadership</li>
                                 </ul>
                             </div>
-                            <div class="timeline-item" data-category="administrative" data-date="2016-05">
+                            <div class="timeline-item" data-category="administrative" data-date="2016-05" data-end-date="2023-05">
                                 <div class="role-title">CEO/Consultant</div>
                                 <div class="company-meta">
                                     <div class="company-name">TroyMD Wellness, PLLC</div>
                                     <div class="location">Johnson City, TN</div>
                                 </div>
                                 <div class="role-meta">
-                                    <span class="dates">May 2016 - March 2023</span>
+                                    <span class="dates">May 2016 - May 2023</span>
                                 </div>
                                 <div class="company-description">
                                     This company was created by me to provide executive/consultative services to various clients.
@@ -1150,18 +1146,9 @@
                                         <li>Implemented data governance and analytics strategy</li>
                                         <li>Interim COO/CMO responsible for bankruptcy navigation and corporate integrity agreement compliance, while optimizing operations, contracting, and supply chain</li>
                                     </ul>
-
-                                    <h4>Information Technology</h4>
-                                    <ul class="accomplishments">
-                                        <li>Data strategy/data governance implementation</li>
-                                        <li>Multiple performance improvement initiatives focused on data-driven methodologies</li>
-                                        <li>EMR deployment/optimizations: Epic (case management/revenue cycle), Athena deployment (2 instances), Credible analytics and provider documentation</li>
-                                        <li>Transitioning and optimizing IT departments/systems and establishing cost-savings through contract management</li>
-                                        <li>Interim CIO transition focused on optimizing IT systems and establishing cost-savings through contract management at large academic hospital and outpatient surgery centers</li>
-                                    </ul>
                                 </div>
                             </div>
-                            <div class="timeline-item" data-category="administrative" data-date="2014-09">
+                            <div class="timeline-item" data-category="administrative" data-date="2014-09" data-end-date="2016-05">
                                 <div class="role-title">Executive Vice President, Chief Medical Officer</div>
                                 <div class="company-meta">
                                     <div class="company-name">Capella Health System</div>
@@ -1184,7 +1171,7 @@
                                     <li>Responsible for deploying the use of Crimson data to drive improvement efforts across many opportunities. Managed the Advisory Board contract along with a Performance Improvement Program across all hospitals</li>
                                 </ul>
                             </div>
-                            <div class="timeline-item" data-category="administrative" data-date="2010-03">
+                            <div class="timeline-item" data-category="administrative" data-date="2010-03" data-end-date="2014-09">
                                 <div class="role-title">System Vice President, Chief Quality and Medical Information Officer</div>
                                 <div class="company-meta">
                                     <div class="company-name">Wellmont Health System</div>
@@ -1206,7 +1193,7 @@
                                     <li>Contract/vendor management to include numerous software vendors (Epic, Press Ganey, and Comparion)</li>
                                 </ul>
                             </div>
-                            <div class="timeline-item" data-category="administrative" data-date="2006-07">
+                            <div class="timeline-item" data-category="administrative" data-date="2006-07" data-end-date="2010-03">
                                 <div class="role-title">Chief Medical Officer, Hospital and Clinic</div>
                                 <div class="company-meta">
                                     <div class="company-name">University of Texas Medical Branch</div>
@@ -1245,20 +1232,20 @@
                             </div>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-item" data-category="clinical" data-date="2023-05">
+                            <div class="timeline-item" data-category="clinical" data-date="2023-05" data-end-date="Present">
                                 <div class="role-title">Primary Care/Chief Perioperative Medicine</div>
                                 <div class="company-meta">
                                     <div class="company-name">James H. Quillen Medical Center</div>
                                     <div class="location">Johnson City, TN</div>
                                 </div>
                                 <div class="role-meta">
-                                    <span class="dates">May 2023 - May 2024</span>
+                                    <span class="dates">May 2023 - Present</span>
                                 </div>
                                 <div class="job-description">
                                     Typical clinical duties
                                 </div>
                             </div>
-                            <div class="timeline-item" data-category="clinical" data-date="2023-08">
+                            <div class="timeline-item" data-category="clinical" data-date="2023-08" data-end-date="Present">
                                 <div class="role-title">CEO/Physician</div>
                                 <div class="company-meta">
                                     <div class="company-name">Partners for Health, PLLC</div>
@@ -1278,7 +1265,7 @@
                                     <li>Facilitated with contracting as we created an Intensive Outpatient Program</li>
                                 </ul>
                             </div>
-                            <div class="timeline-item" data-category="clinical" data-date="2021-02">
+                            <div class="timeline-item" data-category="clinical" data-date="2021-02" data-end-date="2021-12">
                                 <div class="role-title">Primary Care Physician</div>
                                 <div class="company-meta">
                                     <div class="company-name">HealthyMe PLLC</div>
@@ -1291,7 +1278,7 @@
                                     I started my own primary care clinic.
                                 </div>
                             </div>
-                            <div class="timeline-item" data-category="clinical" data-date="2018-06">
+                            <div class="timeline-item" data-category="clinical" data-date="2018-06" data-end-date="2018-10">
                                 <div class="role-title">Primary Care Physician</div>
                                 <div class="company-meta">
                                     <div class="company-name">Medical Care PLLC</div>
@@ -1304,7 +1291,7 @@
                                     This role was a full-time clinical position and ended when I got a job as CMO at AAHS.
                                 </div>
                             </div>
-                            <div class="timeline-item" data-category="clinical" data-date="2006-07">
+                            <div class="timeline-item" data-category="clinical" data-date="2006-07" data-end-date="2010-03">
                                 <div class="role-title">Hospitalist</div>
                                 <div class="company-meta">
                                     <div class="company-name">University of Texas Medical Branch</div>
@@ -1317,7 +1304,7 @@
                                     This correctional medicine position started as 80% to 90% clinical while I recruited to build a hospitalist program. After the first year, I became the CMO of the Texas Department of Criminal Justice Hospital with about 75% clinical. At the time of my departure, I was 50% clinical.
                                 </div>
                             </div>
-                            <div class="timeline-item" data-category="clinical" data-date="2006-01">
+                            <div class="timeline-item" data-category="clinical" data-date="2006-01" data-end-date="2006-06">
                                 <div class="role-title">Hospitalist-Locums</div>
                                 <div class="company-meta">
                                     <div class="company-name">EnhanceMed, Mayo Clinic</div>
@@ -1330,7 +1317,7 @@
                                     In this role, I provided coverage on the weekends for outlying hospitals.
                                 </div>
                             </div>
-                            <div class="timeline-item" data-category="clinical" data-date="2003-12">
+                            <div class="timeline-item" data-category="clinical" data-date="2003-12" data-end-date="2007-01">
                                 <div class="role-title">Physician</div>
                                 <div class="company-meta">
                                     <div class="company-name">Cornerstone Hospital Sterling Healthcare</div>
@@ -1343,7 +1330,7 @@
                                     In this role with this long-term acute care facility (LTAC), I provided night and weekend coverage during electives and didactic periods in my residency and graduate studies.
                                 </div>
                             </div>
-                            <div class="timeline-item" data-category="clinical" data-date="2003-12">
+                            <div class="timeline-item" data-category="clinical" data-date="2003-12" data-end-date="2005-06">
                                 <div class="role-title">Physician</div>
                                 <div class="company-meta">
                                     <div class="company-name">Galveston County Health District</div>
@@ -1354,19 +1341,6 @@
                                 </div>
                                 <div class="job-description">
                                     In this role with this federally qualified health center, I provided primary care and urgent care coverage services through our county health district.
-                                </div>
-                            </div>
-                            <div class="timeline-item" data-category="clinical" data-date="2006-07">
-                                <div class="role-title">MD: UTMB</div>
-                                <div class="company-meta">
-                                    <div class="company-name">University of Texas Medical Branch</div>
-                                    <div class="location">Galveston, TX</div>
-                                </div>
-                                <div class="role-meta">
-                                    <span class="dates">July 2006 - March 2010</span>
-                                </div>
-                                <div class="job-description">
-                                    Typical clinical duties
                                 </div>
                             </div>
                         </div>
@@ -1382,14 +1356,12 @@
                             </div>
                         </div>
                         <div class="timeline">
-                            <div class="timeline-item" data-category="academic" data-date="2014">
-                                <div class="role-title">Adjunct Faculty, Part-Time</div>
+                            <div class="timeline-item" data-category="academic" data-date="2014-03" data-end-date="2015-12">
+                                <div class="role-title">Faculty</div>
                                 <div class="company-meta">
                                     <div class="company-name"><a href="https://www.king.edu/" target="_blank" rel="noopener noreferrer">King University</a></div>
                                     <div class="location">Bristol, TN</div>
-                                </div>
-                                <div class="role-meta">
-                                    <span class="dates">2014 - 2017</span>
+                                    <span class="dates">March 2014 - December 2015</span>
                                 </div>
                                 <div class="job-description">
                                     Develop and taught courses in the Health Administration Program
@@ -1399,14 +1371,12 @@
                                     <li>Designed and taught curriculum</li>
                                 </ul>
                             </div>
-                            <div class="timeline-item" data-category="academic" data-date="2012">
-                                <div class="role-title">Adjunct Faculty, Part-Time</div>
+                            <div class="timeline-item" data-category="academic" data-date="2012-01" data-end-date="2014-12">
+                                <div class="role-title">Faculty</div>
                                 <div class="company-meta">
                                     <div class="company-name"><a href="https://www.etsu.edu/cph/" target="_blank" rel="noopener noreferrer">East Tennessee State University, College of Public Health</a></div>
                                     <div class="location">Johnson City, TN</div>
-                                </div>
-                                <div class="role-meta">
-                                    <span class="dates">2012 - 2014</span>
+                                    <span class="dates">January 2012 - December 2014</span>
                                 </div>
                                 <div class="job-description">
                                     Provided occasional lectures and practicum opportunities for master's public health students.
@@ -1415,14 +1385,14 @@
                                     <li>Course development and teaching of Healthcare Administration and Leadership</li>
                                 </ul>
                             </div>
-                            <div class="timeline-item" data-category="academic" data-date="2006">
+                            <div class="timeline-item" data-category="academic" data-date="2006-07" data-end-date="2010-03">
                                 <div class="role-title">Assistant Professor, Internal Medicine, Full Time</div>
                                 <div class="company-meta">
                                     <div class="company-name"><a href="https://www.utmb.edu/" target="_blank" rel="noopener noreferrer">University of Texas Medical Branch</a></div>
                                     <div class="location">Galveston, TX</div>
+                                    <span class="dates">July 2006 - March 2010</span>
                                 </div>
                                 <div class="role-meta">
-                                    <span class="dates">2006 - 2010</span>
                                 </div>
                                 <div class="job-description">
                                     Teaching responsibilities for clinical and didactic activities.
@@ -1558,10 +1528,10 @@
                                 </div>
 
                                 <!-- Academic -->
-                                <div class="gantt-entry academic label-top" style="--start: 14; --end: 17;">
+                                <div class="gantt-entry academic label-top" style="--start: 14.25; --end: 16;">
                                     <div class="entry-label">Faculty: King</div>
                                 </div>
-                                <div class="gantt-entry academic" style="--start: 10.25; --end: 14;">
+                                <div class="gantt-entry academic" style="--start: 12.08; --end: 15;">
                                     <div class="entry-label">Faculty: ETSU</div>
                                 </div>
                                 <div class="gantt-entry academic" style="--start: 6.5; --end: 10.25;">
@@ -2090,9 +2060,17 @@
             // Work section specific functionality
             const workSection = document.getElementById('work');
             if (workSection) {
+                // Function to format date string
+                function formatDate(dateStr) {
+                    if (!dateStr) return '';
+                    const [year, month] = dateStr.split('-');
+                    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                    return month ? `${months[parseInt(month) - 1]} ${year}` : year;
+                }
+
                 // Function to organize timeline items chronologically
                 function organizeTimelineItems() {
-                    const timelineItems = workSection.querySelectorAll('.view-categorized .timeline-item');
+                    const timelineItems = Array.from(workSection.querySelectorAll('.view-categorized .timeline-item'));
                     const chronologicalTimelines = {
                         '2020-Present': workSection.querySelector('.work-category[data-years="2020-Present"] .timeline'),
                         '2015-2019': workSection.querySelector('.work-category[data-years="2015-2019"] .timeline'),
@@ -2100,23 +2078,35 @@
                         '2003-2009': workSection.querySelector('.work-category[data-years="2003-2009"] .timeline')
                     };
 
+                    // Clear existing items
+                    Object.values(chronologicalTimelines).forEach(timeline => {
+                        timeline.innerHTML = '';
+                    });
+
+                    // Sort items by date (newest first)
+                    timelineItems.sort((a, b) => {
+                        const dateA = a.getAttribute('data-date');
+                        const dateB = b.getAttribute('data-date');
+                        return dateB.localeCompare(dateA);
+                    });
+
                     timelineItems.forEach(item => {
-                        const date = item.getAttribute('data-date');
-                        const year = parseInt(date.split('-')[0]);
-                        const clonedItem = item.cloneNode(true);
+                        const startDate = item.getAttribute('data-date');
+                        const startYear = parseInt(startDate.split('-')[0]);
                         
-                        if (year >= 2020) {
-                            chronologicalTimelines['2020-Present'].appendChild(clonedItem);
-                        } else if (year >= 2015) {
-                            chronologicalTimelines['2015-2019'].appendChild(clonedItem);
-                        } else if (year >= 2010) {
-                            chronologicalTimelines['2010-2014'].appendChild(clonedItem);
-                        } else {
-                            chronologicalTimelines['2003-2009'].appendChild(clonedItem);
-                        }
+                        // Find which period this belongs to
+                        let period;
+                        if (startYear >= 2020) period = '2020-Present';
+                        else if (startYear >= 2015) period = '2015-2019';
+                        else if (startYear >= 2010) period = '2010-2014';
+                        else period = '2003-2009';
+
+                        // Add entry to appropriate period
+                        const clonedItem = item.cloneNode(true);
+                        chronologicalTimelines[period].appendChild(clonedItem);
                     });
                 }
-
+                
                 // Function to initialize timeline handlers
                 function initializeTimelineHandlers() {
                     // Initially hide all timelines

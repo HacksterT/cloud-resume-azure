@@ -94,6 +94,31 @@ To update the resume:
 3. Commit changes to Git
 4. Push to main branch - automatic deployment handles the rest
 
+## Known Issues and Future Work
+
+### Visual Design Improvements
+- Update chronological view color scheme:
+  - Current colors may confuse users as they differ from categorized and summary views
+  - Replace current colors with shades of gray to maintain visual distinction without implying category relationships
+  - Ensure consistency with the overall design language of the resume
+
+### Overlapping Roles Display
+Currently working on improving how overlapping roles are displayed in the chronological view:
+- Need to fix the continuation entries to consistently show:
+  - Full role title
+  - Company name and location
+  - Properly formatted date range (Start - End)
+  - "(continued)" indicator
+- Current implementation only partially works:
+  - Some entries are missing company information
+  - Date formatting needs to be consistent across all entries
+  - Need to ensure proper handling of entries without specific months
+- Next steps:
+  - Review and fix the continuation entry cloning logic
+  - Ensure consistent date formatting
+  - Maintain full company information in continuation entries
+  - Test across all time periods
+
 ## Next Steps
 ### Backend Implementation
 1. **Azure Functions Setup**
