@@ -94,6 +94,53 @@ To update the resume:
 3. Commit changes to Git
 4. Push to main branch - automatic deployment handles the rest
 
+## Recent Updates
+- Fixed Work Activity section behavior:
+  - Now starts collapsed by default
+  - Properly toggles open/close when clicked
+  - Maintains consistent behavior with other sections
+  - Preserved menu functionality for different views (Categorized/Chronological/Summary)
+- Simplified JavaScript code for better maintainability
+- Removed unnecessary special case handling
+
+## Next Steps
+### Backend Implementation (Priority Order)
+1. **Visitor Counter Implementation**
+   - Create Azure Function API
+   - Set up CosmosDB for storing visit count
+   - Add counter display to frontend
+   - Implement counter increment logic
+
+2. **Azure Infrastructure Improvements**
+   - Set up staging environment
+   - Implement A/B testing capability
+   - Add application monitoring
+   - Configure automated backups
+
+3. **Performance Optimization**
+   - Implement CDN for static assets
+   - Add caching headers
+   - Optimize image delivery
+   - Implement lazy loading for images
+
+4. **Security Enhancements**
+   - Add WAF (Web Application Firewall)
+   - Implement rate limiting
+   - Set up security monitoring
+   - Configure automated security scanning
+
+### To Deploy Latest Changes
+1. Commit changes to Git:
+   ```bash
+   git add .
+   git commit -m "Fixed Work Activity section behavior and updated README"
+   git push origin main
+   ```
+2. GitHub Actions will automatically:
+   - Build the project
+   - Deploy to Azure Static Web Apps
+   - Update the live site at www.troymd.com
+
 ## Known Issues and Future Work
 
 ### Visual Design Improvements
@@ -118,38 +165,6 @@ Currently working on improving how overlapping roles are displayed in the chrono
   - Ensure consistent date formatting
   - Maintain full company information in continuation entries
   - Test across all time periods
-
-## Next Steps
-### Backend Implementation
-1. **Azure Functions Setup**
-   - Create HTTP-triggered Azure Function
-   - Configure CORS settings
-   - Set up local development environment
-   - Deploy to Azure
-
-2. **Database Integration**
-   - Create CosmosDB account
-   - Set up database and container
-   - Configure Function bindings for CosmosDB
-   - Implement counter logic
-
-3. **Visitor Counter Feature**
-   - Add counter display to frontend
-   - Implement JavaScript API call
-   - Connect frontend with Azure Function
-   - Test counter functionality
-
-4. **Testing Framework**
-   - Set up xUnit testing
-   - Create test cases for Azure Function
-   - Implement integration tests
-   - Add tests to CI/CD pipeline
-
-### Resources
-- [HTTP triggered Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger)
-- [CosmosDB Bindings](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-cosmosdb-v2)
-- [xUnit Testing](https://xunit.net/docs/getting-started)
-- [JavaScript API Calls](https://www.digitalocean.com/community/tutorials/how-to-use-the-javascript-fetch-api-to-get-data)
 
 ## Status
 - ✅ Basic structure and styling complete
