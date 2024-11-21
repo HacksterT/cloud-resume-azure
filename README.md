@@ -3,6 +3,19 @@
 ## Project Overview
 This project implements a cloud-hosted resume website using Azure Static Web Apps. The design focuses on simplicity, maintainability, and professional presentation.
 
+## Project Overview and Architecture
+
+### Local Development Environment (Your Computer)
+We have your resume website code in the `Azure_Resume-new` folder. Inside this, we have a `frontend` folder with your HTML/JavaScript for the website, and a `backend` folder with our Function App code. The backend code includes the visitor counter logic that will talk to our database. When we make changes locally, we use Git to send these changes to GitHub.
+
+### GitHub (Code Repository)
+GitHub acts as the central hub where all your code lives. It has two main jobs here: storing your code and deploying it. Through GitHub Actions (the workflow files in `.github/workflows`), it automatically takes your code and deploys it to Azure whenever you push changes. Think of GitHub as both a storage place and a delivery service - it stores your code and makes sure it gets to Azure properly.
+
+### Azure Portal (Cloud Services)
+In Azure, we've set up two main services: a Cosmos DB (your database) to store the visitor count, and a Function App (your API) to manage the counter. The Function App runs the code from your backend folder to talk to the database. We've also set up "secrets" (connection strings and keys) in the Function App so it can securely connect to the database. When GitHub Actions deploys your code, it goes to this Function App.
+
+The flow is: Local Changes → GitHub → Azure Portal. You make changes on your computer, push to GitHub, and GitHub automatically deploys them to Azure.
+
 ## Live Website
 - Production URL: [www.troymd.com](https://www.troymd.com)
 - Azure URL: [jolly-flower-02175240f.5.azurestaticapps.net](https://jolly-flower-02175240f.5.azurestaticapps.net)
