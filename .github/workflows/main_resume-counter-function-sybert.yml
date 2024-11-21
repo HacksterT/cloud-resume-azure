@@ -41,4 +41,4 @@ jobs:
           app-name: 'resume-counter-function-sybert'
           slot-name: 'Production'
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_47ABDC0C18FD445BA6D8304F7F4DA4C5 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
