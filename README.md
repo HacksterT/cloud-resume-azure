@@ -194,6 +194,23 @@ To update the resume:
 5. Configure CI/CD pipeline updates
 6. Deploy and test in production
 
+## Security Considerations
+### Current Development Setup
+The project currently uses standard access settings for development and testing purposes.
+
+### Future Security Improvements
+1. **Storage Account Enhancements:**
+   - Implement Azure Private Link connection
+   - Restrict network access using VNet rules
+   - Prevent shared key access (use Azure AD)
+   - Disable public access using private endpoints
+
+### Security Rationale
+- Development Phase: Current settings prioritize functionality and development speed
+- Production Hardening: Security improvements planned for production phase
+- Risk Assessment: Current setup acceptable for personal resume project scope
+- Future Roadmap: Security features to be implemented incrementally
+
 ## Next Steps
 ### Backend Implementation (Priority Order)
 1. **Visitor Counter Implementation**
