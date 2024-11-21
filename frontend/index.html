@@ -42,6 +42,22 @@
             color: white;
             padding: 2rem;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .visitor-counter {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: rgba(227, 242, 253, 0.4);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 1rem;
+            color: #000;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .profile-section {
@@ -658,7 +674,7 @@
         .work-categories.active {
             display: block;
         }
-        
+
         /* Presentation Resources */
         .resource-link {
             display: flex;
@@ -1117,6 +1133,7 @@
 </head>
 <body>
     <header class="header">
+        <div class="visitor-counter">👁️ <span id="visitor-count">0</span></div>
         <div class="profile-section">
             <div class="profile-photo">
                 <img src="assets/presentations/picture.jpg" alt="Troy E. Sybert" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">

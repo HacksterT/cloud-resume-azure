@@ -1,4 +1,15 @@
 // Resume data loading and population
+
+async function getVisitorCount() {
+    try {
+        const response = await fetch('YOUR_AZURE_FUNCTION_URL');
+        const data = await response.json();
+        document.getElementById('visitor-count').innerText = data.count;
+    } catch (error) {
+        console.log('Error fetching visitor count:', error);
+    }
+}
+
 class ResumeManager {
     constructor() {
         this.init();
@@ -7,6 +18,7 @@ class ResumeManager {
     async init() {
         try {
             this.setupEventListeners();
+            await getVisitorCount();  // Add visitor counter
         } catch (error) {
             console.error('Error initializing resume:', error);
         }
