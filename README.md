@@ -194,6 +194,28 @@ To update the resume:
 5. Configure CI/CD pipeline updates
 6. Deploy and test in production
 
+## Current Progress
+
+### Infrastructure Setup
+1. **Azure Cosmos DB**
+   - Account: `resume-counter-db-sybert`
+   - Database: `CounterDB`
+   - Container: `Counter` with `/id` partition key
+   - Initial document created: `{"id": "1", "count": 0}`
+
+2. **Azure Function App**
+   - Name: `resume-counter-function-sybert`
+   - Runtime: Node.js
+   - Environment Variables Set:
+     - COSMOS_DB_ENDPOINT
+     - COSMOS_DB_KEY
+   - GitHub Actions deployment enabled
+
+### Next Steps
+1. Create HTTP trigger function `GetResumeCounter`
+2. Connect frontend to the API
+3. Test visitor counter functionality
+
 ## Security Considerations
 ### Current Development Setup
 The project currently uses standard access settings for development and testing purposes.
