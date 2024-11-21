@@ -103,6 +103,82 @@ To update the resume:
 - Simplified JavaScript code for better maintainability
 - Removed unnecessary special case handling
 
+## Upcoming Features
+### Visit Counter Implementation Plan
+1. **Backend Infrastructure**
+   - Azure Cosmos DB setup for visitor count storage
+   - Azure Functions API to handle counter operations:
+     - GET: Retrieve current count
+     - POST: Increment count
+   - Secure API access with proper CORS and authentication
+
+2. **Database Design**
+   - Collection: `VisitorStats`
+   - Document Structure:
+     ```json
+     {
+         "id": "visitor_count",
+         "count": 0,
+         "lastUpdated": "2024-01-20T00:00:00Z"
+     }
+     ```
+
+3. **API Implementation**
+   - Create Azure Function with HTTP trigger
+   - Implement counter logic:
+     ```javascript
+     // Counter increment function
+     async function incrementCounter(context, req) {
+         try {
+             const { count } = await container.item("visitor_count").read();
+             await container.item("visitor_count").replace({
+                 id: "visitor_count",
+                 count: count + 1,
+                 lastUpdated: new Date().toISOString()
+             });
+             return { count: count + 1 };
+         } catch (error) {
+             context.log.error("Error updating counter:", error);
+             throw error;
+         }
+     }
+     ```
+
+4. **Frontend Integration**
+   - Add counter display to resume header
+   - Implement counter update on page load:
+     ```javascript
+     async function updateVisitorCount() {
+         try {
+             const response = await fetch('your-function-url');
+             const { count } = await response.json();
+             document.getElementById('visitor-count').textContent = count;
+         } catch (error) {
+             console.error('Error updating visitor count:', error);
+         }
+     }
+     ```
+
+5. **Testing & Monitoring**
+   - Unit tests for Azure Function
+   - Integration tests for API endpoints
+   - Monitoring setup in Azure Application Insights
+   - Performance metrics tracking
+
+6. **Security Considerations**
+   - Rate limiting to prevent abuse
+   - IP-based duplicate visit filtering
+   - API key authentication
+   - CORS policy configuration
+
+### Implementation Steps
+1. Create Azure Cosmos DB account and database
+2. Set up Azure Functions project
+3. Implement counter API
+4. Add frontend counter display
+5. Configure CI/CD pipeline updates
+6. Deploy and test in production
+
 ## Next Steps
 ### Backend Implementation (Priority Order)
 1. **Visitor Counter Implementation**
@@ -180,11 +256,11 @@ Currently working on improving how overlapping roles are displayed in the chrono
   - Test across all time periods
 
 ## Status
-- ✅ Basic structure and styling complete
-- ✅ Responsive design implemented
-- ✅ Section navigation optimized
-- ✅ Content organization finalized
-- ✅ Azure deployment complete
-- ✅ Custom domain configured
-- ✅ Email services preserved
-- ✅ CI/CD pipeline established
+- Basic structure and styling complete
+- Responsive design implemented
+- Section navigation optimized
+- Content organization finalized
+- Azure deployment complete
+- Custom domain configured
+- Email services preserved
+- CI/CD pipeline established
