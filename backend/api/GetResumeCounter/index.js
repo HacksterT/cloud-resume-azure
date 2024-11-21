@@ -1,3 +1,4 @@
+// Counter function for Azure Resume Project
 const { CosmosClient } = require("@azure/cosmos");
 
 const config = {
