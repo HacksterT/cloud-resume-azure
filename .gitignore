@@ -164,5 +164,8 @@ frontend/admin/
 frontend/data/*.json
 .env
 
+# Azure Functions
+local.settings.json
+
 # SageMath cloud uploaded files
 upload/
