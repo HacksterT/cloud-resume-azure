@@ -12,6 +12,10 @@ This project implements a cloud-hosted resume website using Azure Static Web App
 - **Hosting**: Azure Static Web Apps
 - **Domain**: Custom domain (www.troymd.com) with GoDaddy DNS
 - **Deployment**: GitHub Actions CI/CD pipeline
+- **Backend**: Azure Functions (Node.js 20 LTS)
+  - Function App: resume-counter-sybert.azurewebsites.net
+  - Region: East US 2
+  - Plan: Consumption (Serverless)
 
 ## Current Implementation
 ### Completed Features
@@ -42,6 +46,10 @@ This project implements a cloud-hosted resume website using Azure Static Web App
    - Hash-based navigation support
    - Collapsible work categories with timeline view
    - Animated transitions for better user experience
+   - Visitor counter powered by Azure Functions
+     - Serverless backend (Node.js 20 LTS)
+     - Real-time count updates
+     - Endpoint: resume-counter-sybert.azurewebsites.net
 
 4. **Domain & Email Configuration**
    - Custom domain setup with Azure Static Web Apps
@@ -57,9 +65,12 @@ cloud-resume-azure/
 │   ├── assets/
 │   │   └── presentations/      # Presentations and profile photo
 │   └── js/                     # JavaScript functionality
+├── backend/
+│   └── counter_function/       # Azure Function for visitor counter
 ├── .github/
 │   └── workflows/
-│       └── azure-static-web-apps.yml  # CI/CD configuration
+│       ├── azure-static-web-apps.yml  # Frontend CI/CD
+│       └── main-resume-counter-sybert(production).yml  # Function CI/CD
 └── README.md
 ```
 
@@ -70,16 +81,20 @@ cloud-resume-azure/
 4. Static content for reliable performance
 5. Interactive features for better user engagement
 6. Automated deployment through GitHub Actions
+7. Serverless backend using Azure Functions
 
 ## Deployment Process
 1. **Local Development**
    - Clone the repository
    - Make changes to content
    - Test locally using browser
+   - Test Azure Functions locally with Azure Functions Core Tools
 
 2. **Automated Deployment**
    - Push changes to main branch
-   - GitHub Actions automatically builds and deploys
+   - GitHub Actions automatically builds and deploys:
+     - Frontend to Azure Static Web Apps
+     - Backend to Azure Functions (resume-counter-sybert)
    - Changes live within minutes
 
 3. **Domain Configuration**
