@@ -658,64 +658,8 @@
         .work-categories.active {
             display: block;
         }
-
-        /* Chronological view styles */
-        .work-category[data-years="2020-Present"] .work-category-header {
-            border-bottom: 2px solid #2c3e50;  /* Dark gray for current */
-            background: linear-gradient(to right, rgba(44, 62, 80, 0.1), transparent);
-        }
-
-        .work-category[data-years="2015-2019"] .work-category-header {
-            border-bottom: 2px solid #34495e;  /* Medium-dark gray for recent past */
-            background: linear-gradient(to right, rgba(52, 73, 94, 0.1), transparent);
-        }
-
-        .work-category[data-years="2010-2014"] .work-category-header {
-            border-bottom: 2px solid #7f8c8d;  /* Medium gray for mid past */
-            background: linear-gradient(to right, rgba(127, 140, 141, 0.1), transparent);
-        }
-
-        .work-category[data-years="2003-2009"] .work-category-header {
-            border-bottom: 2px solid #95a5a6;  /* Light gray for earliest */
-            background: linear-gradient(to right, rgba(149, 165, 166, 0.1), transparent);
-        }
-
-        /* Continued role styles */
-        .timeline-item.continued {
-            padding: 10px 15px;
-            margin-bottom: 15px;
-            border-left: 3px solid #dcdde1;
-            background-color: #f8f9fa;
-        }
-
-        .timeline-item.continued .role-title {
-            font-size: 0.95em;
-            color: #2c3e50;
-            margin-bottom: 2px;
-        }
-
-        .timeline-item.continued .company-name {
-            font-size: 0.9em;
-            color: #34495e;
-        }
-
-        .timeline-item.continued .dates {
-            font-size: 0.85em;
-            color: #7f8c8d;
-            font-style: italic;
-        }
-
-        .timeline-item.continued::before {
-            display: none;
-        }
-
+        
         /* Presentation Resources */
-        .presentation-resources {
-            display: flex;
-            gap: 1rem;
-            margin-top: 0.5rem;
-        }
-
         .resource-link {
             display: flex;
             align-items: center;
@@ -1242,10 +1186,6 @@
                         Categorized View
                     </label>
                     <label>
-                        <input type="radio" name="view" value="chronological">
-                        Chronological View
-                    </label>
-                    <label>
                         <input type="radio" name="view" value="summary">
                         Summary View
                     </label>
@@ -1603,61 +1543,6 @@
                                     <li>Practicum and course development: Healthcare Administration and Leadership</li>
                                 </ul>
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Chronological View -->
-                <div class="work-categories view-chronological">
-                    <div class="work-category" data-years="2020-Present">
-                        <div class="work-category-header">
-                            <h3>2020 - Present</h3>
-                            <div class="work-category-toggle">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M7 10l5 5 5-5z"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="timeline">
-                        </div>
-                    </div>
-
-                    <div class="work-category" data-years="2015-2019">
-                        <div class="work-category-header">
-                            <h3>2015 - 2019</h3>
-                            <div class="work-category-toggle">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M7 10l5 5 5-5z"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="timeline">
-                        </div>
-                    </div>
-
-                    <div class="work-category" data-years="2010-2014">
-                        <div class="work-category-header">
-                            <h3>2010 - 2014</h3>
-                            <div class="work-category-toggle">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M7 10l5 5 5-5z"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="timeline">
-                        </div>
-                    </div>
-
-                    <div class="work-category" data-years="2003-2009">
-                        <div class="work-category-header">
-                            <h3>2003 - 2009</h3>
-                            <div class="work-category-toggle">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M7 10l5 5 5-5z"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="timeline">
                         </div>
                     </div>
                 </div>
