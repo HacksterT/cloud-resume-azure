@@ -169,3 +169,23 @@ local.settings.json
 
 # SageMath cloud uploaded files
 upload/
+
+# Node.js
+node_modules/
+package-lock.json
+
+# Azure Function
+backend/node_modules/
+backend/package-lock.json
+local.settings.json
+
+# Zip files
+Zip/
+*.zip
+
+# VS Code
+.vscode/
+
+# Azure deployment files
+.deployment
+.env
