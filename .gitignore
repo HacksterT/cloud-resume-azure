@@ -184,7 +184,6 @@ Zip/
 *.zip
 
 # VS Code
-.vscode/
 
 # Azure deployment files
 .deployment
