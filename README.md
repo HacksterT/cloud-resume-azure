@@ -1,11 +1,13 @@
 # Cloud Resume Project
 
 ## Project Overview
+
 This project implements a cloud-hosted resume website using Azure services. The design focuses on simplicity, maintainability, and professional presentation.
 
 ## Architecture
 
 ### Components
+
 1. **Frontend**
    - Static HTML/CSS/JavaScript
    - Hosted on Azure Storage
@@ -19,17 +21,18 @@ This project implements a cloud-hosted resume website using Azure services. The 
    - Managed via Local Git deployment
 
 3. **Database**
-   - Azure Cosmos DB
+   - Azure Blob Storage
    - Stores visitor count data
    - Connected to Azure Function
 
 ### Deployment Strategy
-- **Frontend Updates**: Using Azure Storage Explorer
-- **Backend Updates**: Using Local Git deployment
+
+- **Frontend Updates**: Automated via GitHub Actions workflow
+- **Backend Updates**: Using Local Git deployment (backend workflows remain disabled)
 - **Version Control**: GitHub repository backup
-- Note: GitHub Actions workflows are currently disabled for manual deployment control
 
 ## Features
+
 1. **Website Content**
    - Professional Summary
    - Work Activity (Administrative, Clinical, and Academic)
@@ -47,7 +50,8 @@ This project implements a cloud-hosted resume website using Azure services. The 
    - Mobile-friendly design
 
 ## File Structure
-```
+
+```plaintext
 Azure_Resume-new/
 ├── frontend/
 │   ├── index.html          # Main resume page
@@ -62,41 +66,48 @@ Azure_Resume-new/
 ## Development Guide
 
 ### Frontend Updates
+
 1. Use Azure Storage Explorer
 2. Navigate to the `$web` container
 3. Upload or modify files as needed
 4. Changes are immediately reflected on the website
 
 ### Backend Updates
+
 1. Make changes to function code
 2. Use Git to deploy:
+
    ```bash
    git add .
    git commit -m "Your update message"
    git push azure main
    ```
 
-## Recent Updates (2024-01-20)
-1. **Deployment Changes**
-   - Disabled GitHub Actions workflows
-   - Switched to manual deployment control
-   - Set up GitHub Desktop for repository management
+## Recent Updates (2025-06-16)
 
-2. **Development Environment**
-   - Using Azure Portal for frontend updates (temporary)
-   - Planning to set up Storage Explorer once .NET 8 is properly installed
-   - GitHub Desktop configured for version control
+1. **Deployment Automation**
+   - Re-enabled GitHub Actions workflow for frontend
+   - Automated deployment to Azure Static Web App
+   - Fixed file structure to match Azure Blob Storage requirements
 
-3. **Known Issues**
-   - Need to review `frontend/main.js` for potential duplicate file issue
-   - Verify correct JavaScript file being used (`frontend/js/resume.js` vs `frontend/main.js`)
-   - Ensure proper file organization in frontend directory
+2. **Frontend Improvements**
+   - Added line breaks to experience items for better formatting
+   - Updated licensure expiration dates
+   - Ensured consistent file organization between local and Azure environments
+   - Data is not stored int he JSON files but in the HTML directly
+
+3. **Development Workflow**
+   - Streamlined git commit process
+   - Established consistent deployment pipeline
+   - Verified automatic deployment functionality
 
 ## Next Steps
-1. **Tools Setup**
-   - Install .NET 8 Runtime
-   - Install Azure Storage Explorer
-   - Configure VS Code for function updates
+
+1. **Future Enhancements**
+   - Consider automating backend deployment
+   - Explore additional UI/UX improvements
+   - Implement content updates as needed
+   - Establish technology portfolio as new content focused on my artifical intelligence work
 
 2. **Code Review**
    - Review and resolve main.js file location/usage
@@ -104,7 +115,7 @@ Azure_Resume-new/
    - Clean up any duplicate JavaScript files
 
 3. **Testing**
-   - Verify frontend update process via Azure Portal
+   - Verify frontend update process via Azure Static Web App
    - Test visitor counter functionality
    - Confirm GitHub backup process
 
@@ -113,6 +124,52 @@ Azure_Resume-new/
    - Update content as needed
    - Enhance interactive elements
 
+## Technical Innovation Portfolio (In Development)
+
+The Technical Innovation Portfolio is planned as a new section to showcase technical skills and projects. This feature is currently under development in the `feature/tech-portfolio` branch.
+
+### Planned Structure
+
+1. **Primary Organization: By Technology Domain**
+   - AI & Machine Learning
+   - Data Analytics & Visualization
+   - Cloud Architecture & Solutions
+   - Programming & Development
+   - Digital Transformation
+
+2. **Secondary Organization: Projects Within Each Domain**
+   - Each domain will contain specific projects demonstrating expertise
+   - Projects will include descriptions, technologies used, and outcomes
+
+3. **Cross-Referencing System**
+   - Projects will be tagged to show cross-domain expertise
+   - Filtering options will allow viewing by domain or project type/industry
+
+### Local Development Instructions
+
+To preview HTML changes locally without deploying:
+
+1. **Direct Browser Opening**
+   - Navigate to the HTML file in File Explorer
+   - Right-click and select "Open with" your preferred browser
+   - Or drag and drop the file into an open browser window
+
+2. **Using Live Server (VS Code)**
+   - Install the "Live Server" extension in VS Code
+   - Right-click on the HTML file and select "Open with Live Server"
+   - Changes will update in real-time
+
+3. **Simple HTTP Server**
+   - Run a Python HTTP server from the project root:
+
+     ```powershell
+     cd c:\Users\email\GitHub\Master_Azure\Resume
+     python -m http.server
+     ```
+
+   - Access at `http://localhost:8000/frontend/index.html`
+
 ## Live URLs
+
 - Website: [www.troymd.com](https://www.troymd.com)
 - Counter API: [resume-counter-function-sybert.azurewebsites.net/api/GetResumeCounter]
